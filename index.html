@@ -1,12 +1,345 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的 GitHub 網站</title>
+<!DOCTYPE html>   <!-- 該頁說明___  網頁名稱 -->
+<html>
+ <head>
+<meta http-equiv="refresh"/>
+<meta charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="蔡金龍.css">  
+<!-- 220928開始導入bootstr彈性盒子模組 -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">  
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/popper.min.js"></script>
+<!-- 240618整合canvas -->
+  <script type="application/javascript">
+   function draw() {
+  var canvas = document.getElementById('canvas');
+  if (canvas.getContext) {
+    var ctx = canvas.getContext('2d');
+    // Quadratric curves example
+    ctx.beginPath();
+    ctx.moveTo(75, 25);
+    ctx.quadraticCurveTo(25, 25, 25, 62.5);
+    ctx.quadraticCurveTo(25, 100, 50, 100);
+    ctx.quadraticCurveTo(50, 120, 30, 125);
+    ctx.quadraticCurveTo(60, 120, 65, 100);
+    ctx.quadraticCurveTo(125, 100, 125, 62.5);
+    ctx.quadraticCurveTo(125, 25, 75, 25);
+    ctx.stroke();
+  }
+}
+  </script>
+
+<style>
+        /* CSS rule to change the color of the specific <hr> element by its id */
+        #myHR {
+             border: none; /* 移除默认边框 */
+            height: 10px; /* 设置高度 */
+            background-color: rgb(255, 0, 0); /* 设置背景颜色 */
+            margin: 1; /* 移除默认边距 */
+             /* float: right; 将元素向右浮动 */
+            margin-right: 50px; /* 在右侧添加 100px 的外边距 */
+        }
+    </style>
 </head>
-<body>
-    <h1>歡迎來到我的 GitHub Pages 網站！</h1>
-    <p>這是一個簡單的靜態網頁。</p>
+<body >
+
+
+<button class ="buttonTT" onclick="javascript:location.href= '蔡金龍.html' " style="margin:5px;" >蔡金龍</button> <!--  固定在左下角的按鈕 -->
+<p class ="p3">  網頁名稱   </p>   <!--  讓只有代碼的頁面AAXX可以清楚的知道這個頁面內容 -->
+<button class ="css_button" onclick="javascript:location.href= '蔡金龍.html' " style="margin:5px;" >蔡金龍</button> <!--  style="margin:5px;"讓按鈕不會干涉到 -->
+
+<HR SIZE=5>   <!----------------------------------------------------------------------------->
+<button class ="button1" onclick="javascript:location.href= 'purpose_plan2.html' " style="margin:5px;" >XXXXINPUT </button> <!--  小綠方格框按鈕 -->
+<a href="jpg5/Pasted image 202205100400.png"><font size="4" color="BLACK">XXXXX</font></a> <!--  跳轉圖片 -->    <font size="5" color="RED">。</font>  <!--間隔用-->
+<a href="jpg5/XXXXX.png"><font size="4" color="BLACK">XXXXX</font>(PNG)</a>   <font size="5" color="RED">。</font>  <!--間隔用-->
+<a href="jpg5/XXXXX.jpg"><font size="4" color="BLACK">XXXXX</font>(jPG)</a>   <font size="5" color="RED">。</font>  <!--間隔用-->
+<a href="mp4_5/XXXX.mp4"><font size="4" color="BLACK">XXXXX</font>(mp4)</a> <font size="5" color="RED">。</font>  <!--間隔用-->
+<a href="jpg5/XXXXX.pdf"><font size="4" color="BLACK">XXXXX</font>(pdf)</a>   <font size="5" color="RED">。</font>  <!--間隔用-->  
+<a href="zip5/XXXXX.zip"><font size="4" color="BLACK">XXXXX</font>(zip)</a>  <font size="5" color="RED">。</font>  <!--間隔用-->
+<a href="zip5/XXXXX.rar"><font size="4" color="BLACK">XXXXX</font>(rar)</a>  <font size="5" color="RED">。</font>  <!--間隔用-->
+<a href="xlsx/XXXXX.xlsx"><font size="4" color="BLACK">XXXXX</font>(xlsx)</a>  <font size="5" color="RED">。</font>  <!--間隔用-->  
+<a href="aac/XXXXXX.aac"><font size="4" color="BLACK">XXXXX</font>(AAC)</a>   <font size="5" color="RED">。</font>  <!--240301_AAC瀏覽器不能直接聽，是下載-->
+<a href="mp3/XXXXXX.mp3"><font size="4" color="BLACK">XXXXX</font>(mp3)</a>   <font size="5" color="RED">。</font>  
+<a href="rbxl/XXXXX.rbxl"><font size="4" color="BLACK">XXXXX</font>(rbxl)</a>   <font size="5" color="RED">。</font>  <!--間隔用--> 
+
+ <font face="標楷體"  size="4" color="#00AA00"> According_to_illustrate </font><!--說明用--> <font size="5" color="RED">。</font>  <!--間隔用--> 
+ <font size="4" color="RED">Conclusion:   </font>  <!--間隔用-->    <font size="5" color="RED">。</font>  <!--間隔用-->
+ <!--直接顯示-->  <img src="jpg5/221227144008.png" style=" width:100%; "> <!--因為彈性盒子分一半，所以要100%，不然圖片大的話會蓋到右半部-->   <p>    </p> 
+ <!--直接顯示-->  <img src="jpg5/XXXX.jpg" style=" width:100%; "> <!--因為彈性盒子分一半，所以要100%，不然圖片大的話會蓋到右半部-->   <p>    </p>
+ <!--直接顯示影片 --><video controls width="100" height="100"  loop>  <source src="mp4_5/XXXX.mp4" type="video/mp4">  您的瀏覽器不支持播放此影片。 </video>
+<!--loop 循環播放-->
+<p>    </p> 
+    
+
+    
+<hr id="myHR" >   <!----------------------------------------------------------------------------->
+    
+    
+
+<!-- 220928開始導入bootstrap彈性盒子模組 -->
+<div class="container-fluid" >
+      <div class="row">
+       <!--------------------------PAGE1___LEFT----------------------------->    
+          <div class="col-4"><!--12分之X-->
+                <div class="text">                 
+<font face="標楷體"  size="5" color="#8B4513"> LLL1: </font>    <!--標題用--> 
+<p>    </p> 
+
+
+
+                </div>
+          </div>
+         <!---------------------------PAGE1___middle----------------------->      
+          <div class="col-4"><!--12分之X-->
+               <div class="text">
+<font face="標楷體"  size="5" color="#8B4513"> MMM1: </font>    <!--標題用--> 
+<p>    </p> 
+
+               </div>
+          </div>
+                   <!---------------------PAGE1___RIGHT------------------------->      
+          <div class="col-4"><!--12分之X-->
+               <div class="text">
+<font face="標楷體"  size="5" color="#8B4513"> RRR1: </font>    <!--標題用--> 
+<p>    </p> 
+
+               </div>
+          </div>
+      </div>
+</div>
+<!--  ------------------------第一頁底------------------------------------------------- -->
+                      <!--  ------------------------第一頁底------------------------------------------------- -->
+<HR>    <!----------------------------------------------------------------------------->
+<!-- 220928開始導入bootstrap彈性盒子模組 -->
+<div class="container-fluid" >
+      <div class="row">
+       <!---------------------------PAGE2___left----------------------->   
+          <div class="col-4"><!--12分之X-->
+                <div class="text">                   
+<font face="標楷體"  size="5" color="#8B4513"> LLL2: </font>    <!--標題用--> 
+<p>    </p> 
+
+                </div>
+          </div>
+        <!---------------------------PAGE2___middle----------------------->  
+          <div class="col-4"><!--12分之X-->
+               <div class="text">   
+<font face="標楷體"  size="5" color="#8B4513"> MMM2: </font>    <!--標題用--> 
+<p>    </p> 
+
+               </div>
+          </div>
+                   <!---------------------------PAGE2___right----------------------->    
+          <div class="col-4"><!--12分之X-->
+               <div class="text">
+<font face="標楷體"  size="5" color="#8B4513"> RRR2: </font>    <!--標題用--> 
+<p>    </p> 
+
+               </div>
+          </div>
+      </div>
+</div>
+<!--  ------------------------第2頁底------------------------------------------------- -->
+                  <!--  ------------------------第2頁底------------------------------------------------- -->                      
+<p>    </p>
+<HR>        <!----------------------------------------------------------------------------->
+<!-- 220928開始導入bootstrap彈性盒子模組 -->
+<div class="container-fluid" >
+      <div class="row">
+       <!---------------------------PAGE3___left----------------------->   
+          <div class="col-4"><!--12分之X-->
+                <div class="text">                   
+<font face="標楷體"  size="5" color="#8B4513"> LLL3: </font>    <!--標題用-->  
+ <p>    </p>
+
+                </div>
+          </div>
+        <!---------------------------PAGE3___middle----------------------->   
+          <div class="col-4"><!--12分之X-->
+               <div class="text">   
+<font face="標楷體"  size="5" color="#8B4513"> MMM3: </font>    <!--標題用-->
+ <p>    </p>
+
+
+               </div>
+          </div>
+                  <!---------------------------PAGE3___right----------------------->   
+          <div class="col-4"><!--12分之X-->
+               <div class="text">   
+<font face="標楷體"  size="5" color="#8B4513"> RRR3: </font>    <!--標題用--> 
+<p>    </p>
+
+
+               </div>
+          </div>
+      </div>
+</div>
+<!--  ------------------------第3頁底------------------------------------------------- -->
+                  <!--  ------------------------第3頁底------------------------------------------------- -->                      
+<HR>           <!----------------------------------------------------------------------------->
+<!-- 220928開始導入bootstrap彈性盒子模組 -->
+<div class="container-fluid" >
+      <div class="row">
+       <!---------------------------PAGE4___left----------------------->   
+          <div class="col-4"><!--12分之X-->
+                <div class="text">                   
+<font face="標楷體"  size="5" color="#8B4513"> LLL4: </font>    <!--標題用--> 
+ <p>    </p>
+
+                </div>
+          </div>
+        <!---------------------------PAGE4___middle----------------------->   
+          <div class="col-4"><!--12分之X-->
+               <div class="text">   
+<font face="標楷體"  size="5" color="#8B4513"> MMM4: </font>    <!--標題用--> 
+ <p>    </p>
+
+
+               </div>
+          </div>
+                  <!---------------------------PAGE4___right----------------------->   
+          <div class="col-4"><!--12分之X-->
+               <div class="text">   
+<font face="標楷體"  size="5" color="#8B4513"> RRR4: </font>    <!--標題用--> 
+ <p>    </p>
+
+
+               </div>
+          </div>
+      </div>
+</div>
+<!--  ------------------------第4頁底------------------------------------------------- -->
+                  <!--  ------------------------第4XX頁底------------------------------------------------- -->       
+<HR>   <!----------------------------------------------------------------------------->
+<!-- 220928開始導入bootstrap彈性盒子模組 -->
+<div class="container-fluid" >
+      <div class="row">
+       <!---------------------------PAGE5___left----------------------->  
+          <div class="col-4"><!--12分之X-->
+                <div class="text">                   
+<font face="標楷體"  size="5" color="#8B4513"> LLL5: </font>    <!--標題用--> 
+ <p>    </p>
+
+                </div>
+          </div>
+        <!---------------------------PAGE5___middle----------------------->  
+          <div class="col-4"><!--12分之X-->
+               <div class="text">   
+<font face="標楷體"  size="5" color="#8B4513"> MMM5: </font>    <!--標題用-->  
+ <p>    </p>
+
+
+               </div>
+          </div>
+                  <!---------------------------PAGE5___right----------------------->   
+          <div class="col-4"><!--12分之X-->
+               <div class="text">   
+<font face="標楷體"  size="5" color="#8B4513"> RRR5: </font>    <!--標題用--> 
+  <p>    </p>
+
+
+               </div>
+          </div>
+      </div>
+</div>
+<!--  ------------------------第5頁底------------------------------------------------- -->
+                  <!--  ------------------------第5XX頁底------------------------------------------------- -->       
+<HR>        <!----------------------------------------------------------------------------->
+<!-- 220928開始導入bootstrap彈性盒子模組 -->
+<div class="container-fluid" >
+      <div class="row">
+      <!---------------------------PAGE6___left-----------------------> 
+          <div class="col-6">
+                <div class="text">                   
+<font face="標楷體"  size="5" color="#8B4513"> LLL6: </font>    <!--標題用--> 
+ <p>    </p>
+
+                </div>
+          </div>
+ <!---------------------------PAGE6___middle----------------------->          
+          <div class="col-4">
+               <div class="text">   
+<font face="標楷體"  size="5" color="#8B4513"> MMM6: </font>    <!--標題用-->  
+ <p>    </p>
+
+               </div>
+          </div>
+          <!---------------------------PAGE6___right-----------------------> 
+          <div class="col-2">
+               <div class="text">   
+<font face="標楷體"  size="5" color="#8B4513"> RRR6: </font>    <!--標題用--> 
+  <p>    </p>
+
+               </div>
+          </div>
+
+
+      </div>
+</div>
+<!--  ------------------------第6頁底------------------------------------------------- -->
+                  <!--  ------------------------第6XX頁底------------------------------------------------- -->     
+<HR>            <!----------------------------------------------------------------------------->
+<!-- 220928開始導入bootstrap彈性盒子模組 -->
+<div class="container-fluid" >
+      <div class="row">
+      <!---------------------------PAGE7___left-----------------------> 
+          <div class="col-4">
+                <div class="text">                   
+<font face="標楷體"  size="5" color="#8B4513"> LLL7: </font>    <!--標題用-->  
+<p>    </p>
+
+                </div>
+          </div>
+    <!---------------------------PAGE7___middle----------------------->       
+          <div class="col-4">
+               <div class="text">   
+<font face="標楷體"  size="5" color="#8B4513"> MMM7: </font>    <!--標題用-->   
+ <font size="4" color="RED">SVG example  </font>  <!--間隔用-->    <font size="5" color="RED">。</font>  <!--間隔用-->
+ <p>    </p>
+ <body>
+<svg
+   width="100mm"
+   height="100mm"
+   viewBox="0 0 210 297"  
+   id="svg8">
+  <defs
+     id="defs2" />
+    <g
+     id="layer1">
+     <path
+     style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 49,147 c 14,-8 28,-9 42,-4 18,21 10,35 1.5,46 -13,11 -26,14 -43,-0.8 -9,-14 -11,-30 0,-42z"
+     id="path2037"
+     sodipodi:nodetypes="ccccc" />
+  </g>
+</svg>
+</body>
+               </div>
+          </div>
+          <!---------------------------PAGE7___right-----------------------> 
+          <div class="col-4">
+               <div class="text">   
+<font face="標楷體"  size="5" color="#8B4513"> RRR7: </font>    <!--標題用-->  
+  <font size="4" color="RED">240618整合canvas  </font>  <!--間隔用-->    <font size="5" color="RED">。</font>  <!--間隔用-->
+ <p>    </p>
+<!-- 240618整合canvas -->
+ <body onload="draw();">
+   <canvas id="canvas" width="150" height="150"></canvas>
+</body>
+               </div>
+          </div>
+
+
+      </div>
+</div>
+<!--  ------------------------第7頁底------------------------------------------------- -->
+                  <!--  ------------------------第7XX頁底------------------------------------------------- --> 
+
+
+<HR>             <!----------------------------------------------------------------------------->
+<a href="#" onClick="JavaScript :history.back(1);">返回上一頁</a>
+<a href="#" onClick="javascript :history.Go(-1);">返回上一頁</a>
+ 
+  
 </body>
 </html>
