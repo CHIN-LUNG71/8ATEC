@@ -1,1 +1,1104 @@
+ /*******************************  鑽石按鈕  */   /*  XXXX    */
+        /*  250203    */   /*   refereence 2024年的筆記file:///I:/HTML%E8%A8%98%E9%8C%84/BASIC_CSS.html  */
+/*  btn 有在使用要分開    */
+.btn2 {
+  z-index: 0;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 4px;
+  width: 20rem;
+  height: 6rem;
+  border-top: 2px double #ffffff92;
+  border-bottom: none;
+  border-left: 2px outset #0000007e;
+  border-right: 2px solid #e94fcab3;
+  border-radius: 1.8rem;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  filter: hue-rotate(-15deg) drop-shadow(0px 30px 10px #00000028) saturate(2);
+          animation: rotate 2s linear infinite ,move2 8s linear infinite ; /* 動畫名稱、持續時間、速度曲線、重複次數 */
+          
+        }
+        
+.btn2:hover {
+          transform: scale(1.1);
+          filter: hue-rotate(-365deg) drop-shadow(0px 30px 10px #00000028) saturate(2);
+        }
+        
+.btn2:hover .title > strong {
+          font-size: 1.2rem;
+          font-weight: 800;
+          transition: all 0.8s;
+        }
+        
+.glass18 {
+          z-index: 10;
+          display: flex;
+          border: double 2px rgba(255, 255, 255, 0.263);
+          backdrop-filter: blur(2px);    
+           /*   250203_元素的背景模糊 5 像素，但元素本身的內容（如文字、圖片）不會受到影響  */
+          filter: blur(1px) brightness(1.1) saturate(50%) hue-rotate(30deg);
+          border-radius: 1.6rem;
+          width: 100%;
+          height: 100%;
+          padding: 1rem;
+          background-color: #ffffff1c;
+          background-origin: content-box;
+          background-clip: content-box, border-box;
+          box-shadow: inset 0 0 10px #a84fd88d;
+        }
+        
+.inner-glass18 {
+          z-index: 10;
+          display: flex;
+          border-left: 1px solid rgba(255, 255, 255, 0.564);
+          border-right: 1px solid rgb(255, 255, 255);
+          backdrop-filter: blur(40px);
+          box-shadow: inset 0 0 20px rgba(246, 142, 213, 0.86);
+          -webkit-backdrop-filter: blur(5px);
+           /*   250203_與 backdrop-filter 相同，但這是針對 WebKit 內核瀏覽器（如 Safari 和舊版 Chrome）的前綴版本  */
+          border-radius: 0.6rem;
+          width: 100%;
+          height: 100%;
+          background-origin: border-box;
+          background-clip: content-box, border-box;
+          filter: brightness(140%);
+        }
+        
+.title18 {
+          inset: 0;
+          display: flex;
+          text-align: center;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          z-index: 90;
+          align-items: center;
+          justify-content: center;
+          color: black;
+          font-size: 1rem;
+          gap: 0.5rem;
+        }
+        
+.thunder18 {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          filter: grayscale(100%) brightness(0);
+          font-size: 1.2rem;
+        }
+        
+.description18 {
+          font-size: 1.2rem;
+          font-weight: 600;
+        }
+        
+.smoke18 {
+          z-index: 90;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+        }
+        
+.cloud18 {
+          position: absolute;
+          border-radius: 9999px;
+        }
+        
+.cloud18:nth-of-type(1) {
+          filter: blur(3px) drop-shadow(-2px 0 3px #ffffff);
+          display: flex;
+          left: 1.6rem;
+          top: 0.2rem;
+          width: 10rem;
+          height: 1rem;
+          background: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.868) 30%,
+            transparent 100%
+          );
+        }
+        
+.cloud18:nth-of-type(2) {
+          left: 2.5rem;
+          top: 2rem;
+          width: 4rem;
+          height: 2rem;
+          background: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 0) 70%
+          );
+          /* border: 1px solid red; */
+          filter: drop-shadow(-10px 10px 3px #d277cc);
+        }
+        
+.cloud18:nth-of-type(3) {
+          left: 10rem;
+          top: 0.5rem;
+          width: 5rem;
+          height: 5rem;
+          background: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 0) 50%
+          );
+          /* border: 1px solid red; */
+          filter: drop-shadow(-5px -5px 7px #ff5500b4);
+        }
+        
+.cloud18:nth-of-type(4) {
+          left: 17rem;
+          top: 1rem;
+          width: 3.4rem;
+          height: 4rem;
+          background: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 1) 0%,
+            transparent 70%
+          );
+          /* border: 1px solid red; */
+          filter: drop-shadow(-1px 0 30px #ff002f);
+        }
+        
+.cloud18:nth-of-type(5) {
+          top: 0.5rem;
+          width: 100%;
+          height: 0.7rem;
+          background: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.293) 30%,
+            rgba(255, 181, 21, 0.164) 50%,
+            rgba(234, 44, 255, 0.419) 60%,
+            rgba(255, 255, 255, 0) 90%
+          );
+        }
+        
+.cloud18:nth-of-type(6) {
+          left: 17.6rem;
+          top: -0.1rem;
+          width: 2rem;
+          height: 2rem;
+          background: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 0) 70%
+          );
+        }
+        
+.cloud18:nth-of-type(7) {
+          left: 7.6rem;
+          transform: rotate(-35deg);
+          top: -2rem;
+          width: 2rem;
+          height: 5rem;
+          background: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.614) 0%,
+            #fd87602d 60%,
+            rgba(255, 255, 255, 0) 100%
+          );
+        }
+        
+.cloud18:nth-of-type(8) {
+          left: 5.5rem;
+          top: -1rem;
+          width: 3rem;
+          height: 3rem;
+          background: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.614) 0%,
+            rgba(255, 255, 255, 0) 80%
+          );
+        }
+        
+.cloud18:nth-of-type(9) {
+          filter: blur(1px) drop-shadow(0px 0 3px #ffffff);
+          left: 0.5rem;
+          bottom: 1.4rem;
+          width: 100%;
+          height: 0.1rem;
+          background: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 1) 50%,
+            rgba(255, 255, 255, 0) 90%
+          );
+        }
+        
+.cloud18:nth-of-type(10) {
+          filter: blur(1px) drop-shadow(0px 0 3px #ffffff);
+          display: flex;
+          left: 0.3rem;
+          top: 1rem;
+          width: 1rem;
+          height: 3rem;
+          border-top: 1px solid white;
+          border-right: 1px solid white;
+          border-bottom: none;
+          background: linear-gradient(
+            to bottom18,
+            rgba(255, 255, 255, 0.419) 0%,
+            transparent 50%
+          );
+        }
+        
+.cloud18:nth-of-type(11) {
+          border-radius: 100%;
+          filter: blur(4px) drop-shadow(0px -10px 10px #ff5107fb);
+          display: flex;
+          left: 12rem;
+          top: 3.5rem;
+          width: 5rem;
+          height: 1.8rem;
+          background: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.773) 10%,
+            rgba(255, 255, 255, 0.159) 60%
+          );
+        }
+        
+.cloud18:nth-of-type(12) {
+          filter: blur(2px) drop-shadow(0px -10px 10px #f36b9d);
+          display: flex;
+          left: 11rem;
+          top: 1.1rem;
+          width: 6rem;
+          height: 0.3rem;
+          background: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.973) 30%,
+            rgba(255, 255, 255, 0.159) 100%
+          );
+        }
+        
+.cloud18:nth-of-type(13) {
+          filter: blur(3px) drop-shadow(-15px 0 5px #f8283d9e);
+          display: flex;
+          left: 8rem;
+          top: 3.7rem;
+          width: 5.5rem;
+          height: 1.7rem;
+          background: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.762) 10%,
+            rgba(255, 255, 255, 0.159) 70%
+          );
+        }
+        
+.cloud18:nth-of-type(14) {
+          filter: blur(1px) drop-shadow(10px -10px 10px #6f0424);
+          transform: rotate(-35deg);
+          display: flex;
+          left: 0.5rem;
+          bottom: 0.3rem;
+          width: 0.5rem;
+          height: 1.2rem;
+          background: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.848) 0%,
+            rgba(255, 255, 255, 0.159) 60%
+          );
+        } 
 
+/*Source data*/
+@keyframes move {
+  0% {background-position: 0 0;}
+  100% {background-position: -300px 0;}  /*宽度固定，如果为百分比背景不会滚动*/
+} 
+@keyframes move2 {
+  0% {background-position: 0 0;}
+  100% {background-position: 3000px 0;}  /*宽度固定，如果为百分比背景不会滚动*/
+} 
+/* 定義 rotate 動畫 */
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-1deg); }
+  50% { transform: rotate(0deg); }
+  100% { transform: rotate(1deg); }
+} 
+@keyframes colorChange {
+  0% { background-color: red; left: 5px; } /* 开始时的颜色和位置 */
+  25% { background-color: Yellow; left: 5px; } /* 开始时的颜色和位置 */
+  50% { background-color: green; left: 5px; } /* 结束时的颜色和位置 */
+  75% { background-color: aqua; left: 5px; } /* 结束时的颜色和位置 */
+  100% { background-color: orange; left: 5px; } /* 结束时的颜色和位置 */
+}
+ /* 250203_鑽石按鈕動畫使用(因為CSS只能用這個方法)   */
+@keyframes btn_colorChange {
+  0% { background-color: #b938ff; left: 5px; } /* 开始时的颜色和位置 */
+  10% { background-color: #daa1f1; left: 15px; } /*  */
+  15.8% { background-color: #f179ec; left: 25px; } /*  */
+  28.15% { background-color: #fefffe; left: 35px; } /*  */
+  45.31% { background-color:  #fc9f9d; left: 45px; } /*  */
+  53.18% { background-color:  #ff7423; left: 55px; } /*  */
+  58.79% { background-color:  #ff875f; left:65px; } /*  */
+65.28% { background-color:  #fbabae; left: 75px; } /*  */
+  75.48% { background-color:  #fcbde5; left: 85px; } /*  */
+  85.31% { background-color:  #e94fca; left: 95px; } /*  */
+  100.29% { background-color:  #ed8664; left: 5px; } /* 结束时的颜色和位置 */
+}
+
+
+
+
+
+/* 固定在左下角的按鈕 */
+.buttonTT {
+  position: fixed;
+  overflow: hidden;
+  bottom: 5px;
+  left: 5px;
+  padding: 6px 12px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  color: #000; /* 设置字体颜色为黑色 */
+  border: 2px solid red; /* 设置边框为红色 */
+  border-radius: 4px;
+  animation: colorChange 5s infinite; /* 动画名称、持续时间和循环次数 */
+}
+
+
+
+.wrap {
+  /*设置背景渐变色*/
+    background-image: linear\-gradient(to right, red, orange, yellow, green, yellow, orange, red, orange, yellow, green, yellow, orange, red);      
+    /*chrome私有样式，加前缀，文字显示背景图片*/
+    -webkit-background-clip: text;      
+    animation: move 8s infinite;      
+    /*文字颜色设为透明*/
+    color: transparent;      
+    /*宽度固定*/
+    width: 100px;
+  }
+  
+.p2{
+color: #f80;
+font-size: 6;
+background-color: #eee;
+}
+
+.p3{
+  position: fixed;
+  overflow: hidden;
+  bottom: 5px;   /* 按鈕固定在視窗的左下角，與底部保持 5px 的距離 */
+  left: 120px;       /* 按鈕固定在視窗的左下角，與左邊保持 30px 的距離 */
+  color: #f80;
+  font-size: 26;
+  background-color: #eee;
+  }
+
+.button {   /* 父按鈕用法*/
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        border-radius: 20px;
+        -webkit-transition-duration: 1.4s; /* Safari */
+        transition-duration: 1.4s;    /*使用 transition-duration 属性来设置 "hover" 效果的速度: */
+        cursor: pointer;
+    }
+      .button1 {    /* 子按鈕用法*/  /*<button class="button button4" */
+        background-color: white; 
+        color: black; 
+        border: 2px solid #4CAF50;
+    }
+    .button1:hover {
+        background-color: #4CAF50;
+        color: white;
+    }
+        .button2 {
+        background-color: white; 
+        color: black; 
+        border: 2px solid #008CBA;
+    }
+        .button2:hover {
+        background-color: #008CBA;
+        color: white;
+    }
+        .button3 {
+        background-color: white; 
+        color: black; 
+        border: 2px solid #f44336;
+    }
+        .button3:hover {
+        background-color: #f44336;
+        color: white;
+    }
+    
+    .button4 {
+        background-color: white;
+        color: black;
+        border: 2px solid #e7e7e7;
+    }
+    
+    .button4:hover {
+      background-color: #e7e7e7;
+      box-shadow: -50px 27px 5px #333333;/* 區塊陰影參數 */
+      -webkit-box-shadow: -50px 27px 5px #333333;/* 區塊陰影參數 */
+      -moz-box-shadow: -50px 27px 5px #333333;/* 區塊陰影參數 */
+    }
+    
+    .button5 {
+        background-color: white;
+        color: black;
+        border: 2px solid #555555;
+    }
+    
+    .button5:hover {
+        background-color: #555555;
+        color: white;
+        box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+        -webkit-box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+        -moz-box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+    }
+    .button9 {     /* 藝術凹凸 */
+      color: rgb(39, 122, 79);
+      font-size: 30px;
+      background-color: rgb(39, 122, 79);
+      text-shadow: rgba(255, 255, 255, 0.1) -1px -1px 1px, rgba(0, 0, 0, 0.5) 1px 1px 1px;
+      border: 2px solid #555555;
+        
+    }
+    .button9:hover {
+        background-color: #555555;
+        color: white;
+        box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+        -webkit-box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+        -moz-box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+    }
+    .button10 {     /* 仿真3D */
+      font-size: 30px;
+      border: 2px solid #555555;
+      color: rgb(255, 255, 255);
+      background-color: rgb(85, 147, 194);
+      text-shadow: rgb(204, 204, 204) 0px 1px 0px, rgb(201, 201, 201) 0px 2px 0px, rgb(187, 187, 187) 0px 3px 0px, rgb(185, 185, 185) 0px 4px 0px, rgb(170, 170, 170) 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 6px 1px, rgba(0, 0, 0, 0.1) 0px 0px 5px, rgba(0, 0, 0, 0.3) 0px 1px 3px, rgba(0, 0, 0, 0.15) 0px 3px 5px, rgba(0, 0, 0, 0.2) 0px 5px 10px, rgba(0, 0, 0, 0.2) 0px 10px 10px, rgba(0, 0, 0, 0.1) 0px 20px 20px;  
+    }
+    .button10:hover {
+        background-color: #555555;
+        color: white;
+        box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+        -webkit-box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+        -moz-box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+    }
+    .button11 {     /* 簡單3D */
+      font-size: 30px;
+      border: 2px solid #555555;
+      color: rgb(255, 255, 255);
+      background-color: rgb(220, 224, 179);
+      text-shadow: rgb(150, 150, 150) 1px 3px 0px, rgb(171, 168, 168) 1px 13px 5px;
+       
+    }
+    .button11:hover {
+        background-color: #555555;
+        color: white;
+        box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+        -webkit-box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+        -moz-box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+    }
+    .button12 {     /* 簡單凹凸 */
+      font-size: 30px;
+      color: rgba(0, 0, 0, 0.6);
+      background-color: rgb(110, 110, 110);
+      text-shadow: rgba(255, 255, 255, 0.2) 3px 2px 3px;
+      border: 2px solid #555555;
+             
+    }
+    .button12:hover {
+        background-color: #555555;
+        color: white;
+        box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+        -webkit-box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+        -moz-box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+    }
+    .button13 {     /* 失焦 */
+      font-size: 30px;
+      border: 2px solid #555555;
+      color: rgba(255, 255, 255, 0.3);
+      background-color: rgb(26, 26, 26);
+      text-shadow: rgba(255, 255, 255, 0.5) 0px 0px 15px, rgba(255, 255, 255, 0.5) 0px 0px 10px;       
+    }
+    .button13:hover {
+        background-color: #555555;
+        color: white;
+        box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+        -webkit-box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+        -moz-box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+    }
+    .button14 {     /* 火焰 */
+      font-size: 30px;
+      border: 2px solid #555555;
+      color: rgb(255, 255, 255);
+      background-color: rgb(51, 51, 51);
+      text-shadow: rgb(255, 255, 255) 0px -1px 4px, rgb(255, 255, 0) 0px -2px 10px, rgb(255, 128, 0) 0px -10px 20px, rgb(255, 0, 0) 0px -18px 40px;       
+    }
+    .button14:hover {
+        background-color: #555555;
+        color: white;
+        box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+        -webkit-box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+        -moz-box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+    }
+    .button15 {     /* 霓虹 */
+      font-size: 30px;
+      border: 2px solid #555555;
+      color: rgb(255, 255, 255);
+      background-color: rgb(51, 51, 51);
+      text-shadow: rgb(255, 255, 255) 0px 0px 5px, rgb(255, 255, 255) 0px 0px 10px, rgb(255, 255, 255) 0px 0px 15px, rgb(255, 45, 149) 0px 0px 20px, rgb(255, 45, 149) 0px 0px 30px, rgb(255, 45, 149) 0px 0px 40px, rgb(255, 45, 149) 0px 0px 50px, rgb(255, 45, 149) 0px 0px 75px;       
+    }
+    .button15:hover {
+        background-color: #555555;
+        color: white;
+        box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+        -webkit-box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+        -moz-box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+    }
+    .button16 {     /* 光暈 */
+      font-size: 30px;
+      border: 2px solid #555555;
+      color: rgb(255, 255, 255);
+      background-color: rgb(3, 89, 45);
+      text-shadow: rgb(255, 255, 255) 0px 0px 10px; 
+    }
+    .button16:hover {
+        background-color: #555555;
+        color: white;
+        box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+        -webkit-box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+        -moz-box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+    }
+    .button17 {     /* 光暈 */
+      font-size: 30px;
+      border: 2px solid #555555;
+      color: rgb(255, 145, 145);
+      background-color: rgb(120, 120, 120);
+      text-shadow: rgb(3, 3, 3) 4px 4px 4px;
+    }
+    .button17:hover {
+        background-color: #555555;
+        color: white;
+        box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+        -webkit-box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+        -moz-box-shadow: -11px 11px 9px #333333;/* 區塊陰影參數 */
+    }
+    /*<!-- 210517-1 :按鈕動畫OK -->  */
+  .button6 {   
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 18px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+    .button6 span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.button6 span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+.button6:hover span {
+  padding-right: 25px;
+}
+.button6:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+ /* 210517-1 :波紋按鈕動畫OK  */
+ /* Bill&Eric未完成的工作 */
+.button7 {
+    position: relative;
+    background-color: #4CAF50;
+    border: none;
+    font-size: 16px;
+    color: #FFFFFF;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+.button7:after {
+    content: "";
+    background: #90EE90;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px!important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+.button7:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+ /* 210517-1 :下壓動畫按鈕效果  */
+.button8 {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;   
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+.button8:hover {background-color: #3e8e41}
+.button8:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+  /*<!-- 金錢記錄 --> */
+    .css_button {
+   padding: 10px 20px;
+   border: 1px solid #E4FF17;
+   background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#AEFF00));
+   background: -webkit-linear-gradient(top, #FFFFFF, #AEFF00);  /* 按鈕漸層參數 */
+   background: -moz-linear-gradient(top, #FFFFFF, #AEFF00);     /* 按鈕漸層參數 */
+   background: -ms-linear-gradient(top, #FFFFFF, #AEFF00);    /* 按鈕漸層參數 */
+   background: -o-linear-gradient(top, #FFFFFF, #AEFF00);    /* 按鈕漸層參數 */
+   background-color: #AEFF00;
+   box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 3px #9C0000;  /* 區塊陰影參數 */
+   -webkit-box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 3px #9C0000; /* 區塊陰影參數 */
+   -moz-box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 3px #9C0000;  /* 區塊陰影參數 */
+   -webkit-border-radius: 15px;
+   -moz-border-radius: 15px;
+   border-radius: 15px;
+   text-shadow: #FF7A7A 1px 1px 0px;
+   color: #8F0000;
+   font-size: 20px;
+   font-family: '微軟正黑體';
+   text-decoration: none;
+   font-weight: bold;
+   -webkit-transition: 0.2s;
+   -moz-transition: 0.2s;
+   -o-transition: 0.2s;
+   cursor: pointer;
+   }
+   .css_button:hover {
+   background: none;
+   background-color: #AEFF00;
+   box-shadow: 0px 0px 5px 0px #AAAAAA;
+   -webkit-box-shadow: 0px 0px 5px 0px #AAAAAA;
+   -moz-box-shadow: 0px 0px 5px 0px #AAAAAA;
+   border: 1px solid #ffffff;
+   color: #470000;
+   }
+.css_button:active {
+   top: 3px;
+   position: relative;
+   }
+  /*<!-- 211222:建立另一個按鈕的顏色  --> */
+   .css_button2 {
+    padding: 10px 20px;
+    border: 1px solid #E4FF17;
+    background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#AEFF00));
+    background: -webkit-linear-gradient(top, #FFFFFF, #fffb00);  /* 211222_主要看到的外型顏色 */
+    background: -moz-linear-gradient(top, #FFFFFF, #AEFF00);     /* 按鈕漸層參數 */
+    background: -ms-linear-gradient(top, #FFFFFF, #AEFF00);    /* 按鈕漸層參數 */
+    background: -o-linear-gradient(top, #FFFFFF, #AEFF00);    /* 按鈕漸層參數 */
+    background-color: hsla(56, 100%, 49%, 0.904);  /* 211222_滑鼠第一次接觸時的顏色 */
+    box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 3px #9C0000;  /* 區塊陰影參數 */
+    -webkit-box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 3px #9C0000; /* 區塊陰影參數 */
+    -moz-box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 3px #9C0000;  /* 區塊陰影參數 */
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    text-shadow: #FF7A7A 1px 1px 0px;
+    color: #8F0000;
+    font-size: 20px;
+    font-family: '微軟正黑體';
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -o-transition: 0.2s;
+    cursor: pointer;
+    }
+    .css_button2:hover {
+    background: none;
+    background-color: #fffb00;/* 211222_滑鼠在上面時候的顏色 */
+    box-shadow: 0px 0px 5px 0px #AAAAAA;
+    -webkit-box-shadow: 0px 0px 5px 0px #AAAAAA;
+    -moz-box-shadow: 0px 0px 5px 0px #AAAAAA;
+    border: 1px solid #ffffff;
+    color: #470000;
+    }
+ .css_button2:active {
+    top: 10px;  /* 211222_滑鼠按下去跳動的大小感覺 */
+    position: relative;
+    }
+
+      /*<!-- 211229:建立另一個按鈕的顏色  --> */
+   .css_button3 {
+    padding: 10px 20px;
+    border: 1px solid #E4FF17;
+    background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#AEFF00));
+    background: -webkit-linear-gradient(top, #FFFFFF, #ff00dd);  /* 211222_主要看到的外型顏色 */
+    background: -moz-linear-gradient(top, #FFFFFF, #AEFF00);     /* 按鈕漸層參數 */
+    background: -ms-linear-gradient(top, #FFFFFF, #AEFF00);    /* 按鈕漸層參數 */
+    background: -o-linear-gradient(top, #FFFFFF, #AEFF00);    /* 按鈕漸層參數 */
+    background-color: #ff00dd;  /* 211222_滑鼠第一次接觸時的顏色 */
+    box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 3px #9C0000;  /* 區塊陰影參數 */
+    -webkit-box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 3px #9C0000; /* 區塊陰影參數 */
+    -moz-box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 3px #9C0000;  /* 區塊陰影參數 */
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    text-shadow: #FF7A7A 1px 1px 0px;
+    color: #8F0000;
+    font-size: 20px;
+    font-family: '微軟正黑體';
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -o-transition: 0.2s;
+    cursor: pointer;
+    }
+    .css_button3:hover {
+    background: none;
+    background-color: #ff00dd;/* 211222_滑鼠在上面時候的顏色 */
+    box-shadow: 0px 0px 5px 0px #AAAAAA;
+    -webkit-box-shadow: 0px 0px 5px 0px #AAAAAA;
+    -moz-box-shadow: 0px 0px 5px 0px #AAAAAA;
+    border: 1px solid #ffffff;
+    color: #470000;
+    }
+ .css_button3:active {
+    top: 10px;  /* 211222_滑鼠按下去跳動的大小感覺 */
+    position: relative;
+    }
+ /*<!-- 211229:建立另一個按鈕的顏色  --> */
+    .css_button4 {
+      padding: 10px 20px;
+      border: 1px solid #E4FF17;
+      background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#AEFF00));
+      background: -webkit-linear-gradient(top, #FFFFFF, #ff00dd);  /* 211222_主要看到的外型顏色 */
+      background: -moz-linear-gradient(top, #FFFFFF, #AEFF00);     /* 按鈕漸層參數 */
+      background: -ms-linear-gradient(top, #FFFFFF, #AEFF00);    /* 按鈕漸層參數 */
+      background: -o-linear-gradient(top, #FFFFFF, #AEFF00);    /* 按鈕漸層參數 */
+      background-color: #ff00dd;  /* 211222_滑鼠第一次接觸時的顏色 */
+      box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 3px #9C0000;  /* 區塊陰影參數 */
+      -webkit-box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 3px #9C0000; /* 區塊陰影參數 */
+      -moz-box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 3px #9C0000;  /* 區塊陰影參數 */
+      -webkit-border-radius: 15px;
+      -moz-border-radius: 15px;
+      border-radius: 15px;
+      text-shadow: #FF7A7A 1px 1px 0px;
+      color: #8F0000;
+      font-size: 20px;
+      font-family: '微軟正黑體';
+      text-decoration: none;
+      font-weight: bold;
+      -webkit-transition: 0.2s;
+      -moz-transition: 0.2s;
+      -o-transition: 0.2s;
+      cursor: pointer;
+      }
+      .css_button4:hover {
+      background: none;
+      background-color: #ff00dd;/* 211222_滑鼠在上面時候的顏色 */
+      box-shadow: 0px 0px 5px 0px #AAAAAA;
+      -webkit-box-shadow: 0px 0px 5px 0px #AAAAAA;
+      -moz-box-shadow: 0px 0px 5px 0px #AAAAAA;
+      border: 1px solid #ffffff;
+      color: #470000;
+      }
+   .css_button4:active {
+      top: 10px;  /* 211222_滑鼠按下去跳動的大小感覺 */
+      position: relative;
+      }
+  /*<!-- 210617:建立兩個物件，背景色.oute。裡面.inner。  --> */
+  /*<!-- Reference:https://pjchender.blogspot.com/2015/04/css-3vh-vw.html  --> */
+  
+   .outer{
+    background-color: rgba(92, 92, 92, 0.6);
+}
+/*<!-- 210617:輸入不同單位裡面放。vh、vw或px就好(放%不能顯示) --> */
+/*  使用%的時候，呈現的結果會是空白的，因為我們的div內並沒有任何內容，所以即使設定為100%，還是不會顯示出任何東西。 */
+.inner{
+    margin:auto;
+    background-color: #f4f405;
+    width:100%;
+    height:100%;
+}
+/*  照片同瀏覽器長寬各50% */
+.inner1{  
+  margin:auto; 
+  width:50vw;
+  height:50vh;
+}
+/*  瀏覽器大小的變化且照片自己長寬的50% */
+.inner2{  
+  margin:auto; 
+  width:50%;
+  height:50%;
+}
+/*  100%就是瀏覽器實際大小在變化，但是高解析的話就會被瀏覽器限制了 */
+.inner100{  
+  margin:auto; 
+  width:100%;
+  height:100%;
+}
+.inner95{  
+  margin:auto; 
+  width:95%;
+  height:95%;
+}
+.inner90{  
+  margin:auto; 
+  width:90%;
+  height:90%;
+}
+.inner80{  
+  margin:auto; 
+  width:80%;
+  height:80%;
+}
+.inner70{  
+  margin:auto; 
+  width:70%;
+  height:70%;
+}
+.inner60{  
+  margin:auto; 
+  width:60%;
+  height:60%;
+}
+.inner50{  
+  margin:auto; 
+  width:50%;
+  height:50%;
+}
+.inner40{  
+  margin:auto; 
+  width:40%;
+  height:40%;
+}
+.inner30{  
+  margin:auto; 
+  width:30%;
+  height:30%;
+}
+.inner20{  
+  margin:auto; 
+  width:20%;
+  height:20%;
+}
+.inner15{  
+  margin:auto; 
+  width:15%;
+  height:15%;
+}
+.inner10{  
+  margin:auto; 
+  width:10%;
+  height:10%;
+}
+.inner5{  
+  margin:auto; /*  距離置中    */
+  width:5%;
+  height:5%;
+}
+  /*******************************  傳統使用固定大小+隱藏遮蔽的方式  */  /*  瀏覽器大小不會連動改變    */
+.box
+{   /*  顯示在瀏覽器的大小    */
+  margin-TOP: 100px; /*  顯示在瀏覽器的位置    */
+  margin-left: -100px; /*  顯示在瀏覽器的位置    */
+  width: 450px;
+  height: 250px;
+  overflow: hidden;
+  background: #f80;
+  transform:rotate(-90deg); /*  旋轉放這邊跟放下面img是不一樣(長寬會顛倒)   */
+ }
+.box img{        /*  圖檔的實際大小跟位置    */
+  width:1706px;
+  height:960px;
+  margin-left: -720px;
+  margin-TOP: -260px;
+}
+  /*******************************  使用百分比+隱藏遮蔽的方式  */   /*  瀏覽器大小會連動改變    */
+.box1
+{   /*  顯示在瀏覽器的大小    */
+ 
+  margin-TOP: 0%; /*  顯示在瀏覽器的位置    */
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #f80;/* 讓我們看遮色片的問置    */
+
+ }
+.box1 img{        /*  圖檔的實際大小跟位置    */
+  transform:rotate(-90deg); /*  旋轉放這邊跟放下面img是不一樣(長寬會顛倒)   */
+  width: 100%;
+  height:100%;
+  margin-left: -37.2%;  /*  左邊減少    */
+  margin-TOP: -9.3%;     /*  上面減少    */
+  margin-bottom: -21%;   /*  下面減少    */
+ /* margin-right:120%;     右邊不管多少+-值都無法改變  */  /*  只能用上面的box1去調整右邊的顯示寬度    */
+}
+
+
+
+
+
+.inner210100{  
+  margin:auto;  /*  距離置中    */
+  width:1706px;
+  height:960px;
+  
+  overflow: hidden;
+  background: #f80;
+  margin-left:-300px;   /*  向左10%    */
+  margin-top:-100px;   /*  向左10%    */
+  margin-bottom:-10px;   /*  向左10%    */
+  margin-right:10px;   /*  向左10%    */
+
+  transform:rotate(-90deg);
+}
+.inner210101{  
+  margin:auto; 
+  width:30%;    /*  如果是固定長寬就會是圓形    */
+  height:30%;
+  background: #f80;
+  border-radius:50%;
+  object-fit: cover;
+} 
+
+
+                    /*  210730    */   /*  用ttf   G:/HTML記錄/fonts/    */
+@font-face {
+  font-family: '清松手寫體2';
+  src: url('fonts/清松手寫體2.woff') format("woff"),     /* 舊版 Android (4.4 版以下) 瀏覽器    */
+         url('fonts/清松手寫體2.ttf') format("truetype"),  /*  大多數瀏覽器(包含chrome)在許多較舊的瀏覽器中無法使用    */
+         url('fonts/清松手寫體2.eot') format("embedded-opentype"); /*  舊版 IE (IE9 之下) 瀏覽器    */
+             /* src: local("Helvetica") <<代表直接抓取使用者電腦中的字型檔    */   
+ /*  src: url(fonts.svg#simple);  使用 SVG 檔案中 id 為 'simple' 的字型    */ 
+}
+
+@font-face {
+  font-family: 'HanziPen SC';
+  src: url('fonts/HanziPen SC.woff') format("woff"),    
+       url('fonts/HanziPen SC.ttf') format("truetype"),  
+       url('fonts/HanziPen SC.eot') format("embedded-opentype"); 
+}
+
+@font-face {
+ font-family: '清松手寫體1';
+ src: url('fonts/清松手寫體1.woff') format("woff"),     
+      url('fonts/清松手寫體1.ttf') format("truetype"), 
+      url('fonts/清松手寫體1.eot') format("embedded-opentype"); 
+
+}
+@font-face {
+  font-family: 'Cursive_Script'; /*  草書字體    */
+ src:url('fonts/Cursive_Script.woff') format("woff"), 
+  url('fonts/Cursive_Script.ttf') format("truetype"),
+  url('fonts/Cursive_Script.eot') format("embedded-opentype");
+}
+  @font-face {
+ font-family: 'Chalk'; /*  黑板字體    */
+ src: url('fonts/Chalk.woff') format("woff"), 
+ url('fonts/Chalk.ttf') format("truetype"),  
+ url('fonts/Chalk.eot') format("embedded-opentype");
+  }
+ @font-face {
+ font-family: 'Annotated'; /*  注音字體    */
+ src: url('fonts/Annotated.woff') format("woff"), 
+ url('fonts/Annotated.ttf') format("truetype"),
+ url('fonts/Annotated.eot') format("embedded-opentype");
+}
+ @font-face {
+ font-family: 'Brush'; /*  毛筆字體    */
+ src: url('fonts/Brush.woff') format("woff"), 
+ url('fonts/Brush.ttf') format("truetype"),
+ url('fonts/Brush.eot') format("embedded-opentype");
+}
+ @font-face {
+ font-family: 'pen'; /*  書寫字體    */
+ src: url('fonts/pen.woff') format("woff"), 
+ url('fonts/pen.ttf') format("truetype"),
+ url('fonts/pen.eot') format("embedded-opentype");
+}
+ @font-face {
+ font-family: 'Signatures'; /*  簽名字體    */
+ src: url('fonts/Signatures.woff') format("woff"), 
+ url('fonts/Signatures.ttf') format("truetype"),
+ url('fonts/Signatures.eot') format("embedded-opentype");
+}
+ @font-face {
+ font-family: 'Terror'; /*  恐怖字體    */
+ src: url('fonts/Terror.woff') format("woff"), 
+ url('fonts/Terror.ttf') format("truetype"),
+ url('fonts/Terror.eot') format("embedded-opentype");
+}
+ @font-face {
+ font-family: 'Seal_Script'; /*  篆書字體    */
+ src:url('fonts/Seal_Script.woff') format("woff"), 
+ url('fonts/Seal_Script.ttf') format("truetype"),
+ url('fonts/Seal_Script.eot') format("embedded-opentype");
+ }
+@font-face {
+ font-family: 'Chinese_characters'; /*  隸書字體    */
+ src: url('fonts/Chinese_characters.woff') format("woff"), 
+ url('fonts/Chinese_characters.ttf') format("truetype"),
+ url('fonts/Chinese_characters.eot') format("embedded-opentype");
+
+} 
+
+
+/*  250203_TEST__如果背景變紅，代表 BB.css 已經成功載入    */
+/*      
+body {
+  background-color: red !important;
+}
+*/
+
+/*  250203_TEST__如果 opacity 動畫有效，代表 linear-gradient 本身無法過渡(背景透明度的效果)    */
+/* 
+body {
+  background: linear-gradient(45deg, #b938ff, #e94fca);
+  transition: opacity 0.5s;
+}
+
+body:hover {
+  opacity: 0.5;
+}
+*/
