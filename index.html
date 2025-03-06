@@ -3,6 +3,8 @@
  <head>
 <meta http-equiv="refresh"/>
 <meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>自行車維修 & 保養預約</title>
 <link rel="stylesheet" type="text/css" href="css/蔡金龍.css">  
 <!-- 220928開始導入bootstr彈性盒子模組 -->
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">  
@@ -39,7 +41,40 @@
              /* float: right; 将元素向右浮动 */
             margin-right: 50px; /* 在右侧添加 100px 的外边距 */
         }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
     </style>
+  
 </head>
 <body >
 
@@ -84,7 +119,36 @@
                 <div class="text">                 
 <font face="標楷體"  size="5" color="#8B4513"> LLL1: </font>    <!--標題用--> 
 <p>    </p> 
-
+    <div class="container">
+        <h2>預約自行車服務</h2>
+        <form id="bookingForm">
+            <label for="name">姓名：</label>
+            <input type="text" id="name" required>
+            
+            <label for="phone">電話：</label>
+            <input type="tel" id="phone" required>
+            
+            <label for="service">選擇服務：</label>
+            <select id="service">
+                <option value="repair">自行車維修</option>
+                <option value="maintenance">保養</option>
+                <option value="cleaning">清洗</option>
+            </select>
+            
+            <label for="date">預約日期：</label>
+            <input type="date" id="date" required>
+            
+            <button type="submit">提交預約</button>
+        </form>
+        <p id="confirmation" style="color: green; display: none;">您的預約已提交！</p>
+    </div>
+    
+    <script>
+        document.getElementById("bookingForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            document.getElementById("confirmation").style.display = "block";
+        });
+    </script>
 
 
                 </div>
