@@ -2,7 +2,7 @@
     console.log(response);  // 確保回應是正確的
     return response.text();
 })  
-006
+007
 
 <!DOCTYPE html>
 <html>
@@ -101,13 +101,9 @@
             fetch("https://script.google.com/macros/s/AKfycbxS3BITs5fcbisPtlERNMRiFzwNBoMg5D0tyuhQOcnXMsSDsl0Sh8jwk-mWAlt1RB-9Pg/exec", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({
-    name: document.getElementById("name").value,
-    phone: document.getElementById("phone").value,
-    service: document.getElementById("service").value,
-    date: document.getElementById("date").value
-  }),
-                mode: 'no-cors'  // 確保設置為 'cors'
+                  body: new URLSearchParams({ name, phone, service, date }).toString() // 確保符合 Google Apps Script 的解析格式
+                   })
+             mode: 'cors'  // 確保設置為 'cors'
             })
 
              .then(response => {
