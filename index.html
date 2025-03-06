@@ -2,7 +2,7 @@
     console.log(response);  // 確保回應是正確的
     return response.text();
 })  
-005
+006
 
 <!DOCTYPE html>
 <html>
@@ -107,7 +107,7 @@
     service: document.getElementById("service").value,
     date: document.getElementById("date").value
   }),
-                mode: 'cors'  // 確保設置為 'cors'
+                mode: 'no-cors'  // 確保設置為 'cors'
             })
 
              .then(response => {
