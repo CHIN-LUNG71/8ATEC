@@ -1,46 +1,26 @@
-<!DOCTYPE html>   <!-- 該頁說明___  網頁名稱 -->
+<!DOCTYPE html>
 <html>
- <head>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自行車維修 & 保養預約</title>
 
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>自行車維修 & 保養預約</title>
-<link rel="stylesheet" type="text/css" href="css/蔡金龍.css">  
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">  
-<script src="js/bootstrap.min.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/popper.min.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="css/蔡金龍.css">  
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">  
 
-<script>
-document.getElementById("bookingForm").addEventListener("submit", function(event) {
-  event.preventDefault(); // 防止表單刷新
-  
-  let name = document.getElementById("name").value;
-  let phone = document.getElementById("phone").value;
-  let service = document.getElementById("service").value;
-  let date = document.getElementById("date").value;
-  
-  fetch("https://script.google.com/macros/s/AKfycbxS3BITs5fcbisPtlERNMRiFzwNBoMg5D0tyuhQOcnXMsSDsl0Sh8jwk-mWAlt1RB-9Pg/exec", {  // fetch("你的Apps Script Web App URL"🔹 改成你的 Web 應用程式網址
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, phone, service, date })
-  })
-  .then(response => response.json())
-  .then(data => alert(data.message))
-  .catch(error => console.error("錯誤:", error));
-});
-</script>
+    <!-- Bootstrap & Popper -->
+    <script src="js/bootstrap.min.js" defer></script>
+    <script src="js/bootstrap.bundle.min.js" defer></script>
+    <script src="js/popper.min.js" defer></script>
 
-  
-<style>
-        /* CSS rule to change the color of the specific <hr> element by its id */
+    <style>
+        /* CSS 設定 */
         #myHR {
-             border: none; /* 移除默认边框 */
-            height: 10px; /* 设置高度 */
-            background-color: rgb(255, 0, 0); /* 设置背景颜色 */
-            margin: 1; /* 移除默认边距 */
-             /* float: right; 将元素向右浮动 */
-            margin-right: 50px; /* 在右侧添加 100px 的外边距 */
+            border: none;
+            height: 10px;
+            background-color: rgb(255, 0, 0);
+            margin-right: 50px;
         }
 
         body {
@@ -50,6 +30,7 @@ document.getElementById("bookingForm").addEventListener("submit", function(event
             background-color: #f4f4f4;
             text-align: center;
         }
+
         .container {
             max-width: 600px;
             margin: 50px auto;
@@ -58,6 +39,7 @@ document.getElementById("bookingForm").addEventListener("submit", function(event
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         input, select, button {
             width: 100%;
             padding: 10px;
@@ -65,29 +47,26 @@ document.getElementById("bookingForm").addEventListener("submit", function(event
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+
         button {
             background-color: #28a745;
             color: white;
             border: none;
             cursor: pointer;
         }
+
         button:hover {
             background-color: #218838;
         }
     </style>
-  
 </head>
-<body >
 
-
-<HR SIZE=5>   <!----------------------------------------------------------------------------->
+<body>
+    <hr id="myHR">
     
-<hr id="myHR" >   <!----------------------------------------------------------------------------->
-
     <div class="container">
         <h2>預約自行車服務</h2>
         <form id="bookingForm">
-       
             <label for="name">姓名：</label>
             <input type="text" id="name" placeholder="姓名" required>
             
@@ -108,7 +87,47 @@ document.getElementById("bookingForm").addEventListener("submit", function(event
         </form>
         <p id="confirmation" style="color: green; display: none;">您的預約已提交！</p>
     </div>
-    
-  
+
+    <script>
+        // 確保 HTML 內容載入後才執行
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("bookingForm").addEventListener("submit", function(event) {
+                event.preventDefault(); // 防止表單刷新
+
+                let name = document.getElementById("name").value;
+                let phone = document.getElementById("phone").value;
+                let service = document.getElementById("service").value;
+                let date = document.getElementById("date").value;
+
+                fetch("https://script.google.com/macros/s/AKfycbxS3BITs5fcbisPtlERNMRiFzwNBoMg5D0tyuhQOcnXMsSDsl0Sh8jwk-mWAlt1RB-9Pg/exec", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name, phone, service, date })
+                })
+                 //先使用 .text() 取得伺服器回應，再手動解析 JSON，避免直接 .json() 導致錯誤
+                .then(response => response.text()) // 先轉換成文字以檢查回應內容
+                .then(text => {
+                    console.log("伺服器回應：", text);//方便 Debug，如果 text 不是 JSON 格式，可以直接看到回應內容
+                    let data;
+                    try {
+                        data = JSON.parse(text);
+                    } catch (error) {
+                        throw new Error("JSON 解析失敗：" + text);//避免非 JSON 格式的錯誤回應導致 fetch() 崩潰。
+                    }
+
+                    if (data.message) {
+                        alert(data.message);
+                        document.getElementById("confirmation").style.display = "block";
+                    } else {
+                        throw new Error("伺服器回傳錯誤：" + JSON.stringify(data));
+                    }
+                })
+                .catch(error => {
+                    console.error("錯誤:", error);
+                    alert("預約提交失敗，請稍後再試！");
+                });
+            });
+        });
+    </script>
 </body>
 </html>
