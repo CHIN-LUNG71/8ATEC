@@ -101,7 +101,12 @@
             fetch("https://script.google.com/macros/s/AKfycbxS3BITs5fcbisPtlERNMRiFzwNBoMg5D0tyuhQOcnXMsSDsl0Sh8jwk-mWAlt1RB-9Pg/exec", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ name, phone, service, date }),
+                  body: JSON.stringify({
+    name: document.getElementById("name").value,
+    phone: document.getElementById("phone").value,
+    service: document.getElementById("service").value,
+    date: document.getElementById("date").value
+  }),
                 mode: 'cors'  // 確保設置為 'cors'
             })
 
