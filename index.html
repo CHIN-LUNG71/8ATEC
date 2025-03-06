@@ -2,7 +2,7 @@
     console.log(response);  // 確保回應是正確的
     return response.text();
 })  
-003
+004
 
 <!DOCTYPE html>
 <html>
@@ -101,7 +101,8 @@
             fetch("https://script.google.com/macros/s/AKfycbxS3BITs5fcbisPtlERNMRiFzwNBoMg5D0tyuhQOcnXMsSDsl0Sh8jwk-mWAlt1RB-9Pg/exec", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ name, phone, service, date })
+                body: JSON.stringify({ name, phone, service, date }),
+                mode: 'cors'  // 確保設置為 'cors'
             })
 
              .then(response => {
