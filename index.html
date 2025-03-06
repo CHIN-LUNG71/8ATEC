@@ -2,7 +2,7 @@
     console.log(response);  // 確保回應是正確的
     return response.text();
 })  
-007
+008
 
 <!DOCTYPE html>
 <html>
@@ -100,7 +100,7 @@
          
             fetch("https://script.google.com/macros/s/AKfycbxS3BITs5fcbisPtlERNMRiFzwNBoMg5D0tyuhQOcnXMsSDsl0Sh8jwk-mWAlt1RB-9Pg/exec", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
                   body: new URLSearchParams({ name, phone, service, date }).toString() // 確保符合 Google Apps Script 的解析格式
                    })
              mode: 'cors'  // 確保設置為 'cors'
