@@ -106,8 +106,8 @@
             })
 
              .then(response => {
-    console.log("伺服器回應狀態碼: ", response.status); // 打印回應狀態碼
-    return response.json();  // 解析 JSON
+               console.log("伺服器回應狀態碼: ", response.status); // 打印回應狀態碼
+               return response.json();  // 解析 JSON
               })
             .then(data => {
                 if (data.message) {
@@ -121,7 +121,7 @@
                 console.error("錯誤:", error);
                 alert("預約提交失敗，請稍後再試！");
             });
-        });
+        
     </script>
 </body>
 </html>
