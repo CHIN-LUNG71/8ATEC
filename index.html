@@ -81,6 +81,12 @@
     </div>
 
     <script>
+
+                        fetch("https://script.google.com/macros/s/AKfycbxS3BITs5fcbisPtlERNMRiFzwNBoMg5D0tyuhQOcnXMsSDsl0Sh8jwk-mWAlt1RB-9Pg/exec", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name, phone, service, date })
+                })
         // 確保 HTML 內容載入後才執行
         document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("bookingForm").addEventListener("submit", function(event) {
@@ -91,11 +97,7 @@
                 let service = document.getElementById("service").value;
                 let date = document.getElementById("date").value;
 
-                fetch("https://script.google.com/macros/s/AKfycbxS3BITs5fcbisPtlERNMRiFzwNBoMg5D0tyuhQOcnXMsSDsl0Sh8jwk-mWAlt1RB-9Pg/exec", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ name, phone, service, date })
-                })
+
                  //先使用 .text() 取得伺服器回應，再手動解析 JSON，避免直接 .json() 導致錯誤
                 .then(response => response.text()) // 先轉換成文字以檢查回應內容
                 .then(text => {
