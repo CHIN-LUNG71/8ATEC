@@ -2,7 +2,7 @@
     console.log(response);  // 確保回應是正確的
     return response.text();
 })  
-002
+003
 
 <!DOCTYPE html>
 <html>
@@ -97,7 +97,8 @@
           // 打印出要傳送的資料
            console.log("提交資料：", { name, phone, service, date });  
             // 發送 POST 請求
-            fetch("https://script.google.com/macros/s/你的腳本ID/exec", {
+         
+            fetch("https://script.google.com/macros/s/AKfycbxS3BITs5fcbisPtlERNMRiFzwNBoMg5D0tyuhQOcnXMsSDsl0Sh8jwk-mWAlt1RB-9Pg/exec", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ name, phone, service, date })
