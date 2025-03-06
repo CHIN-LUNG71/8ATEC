@@ -1,3 +1,9 @@
+ .then(response => {
+    console.log(response);  // 確保回應是正確的
+    return response.text();
+})  
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,8 +14,6 @@
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="css/蔡金龍.css">  
 
-
-    
     <style>
         /* CSS 設定 */
         #myHR {
@@ -81,38 +85,40 @@
     </div>
 
     <script>
-
-fetch("https://script.google.com/macros/s/你的腳本ID/exec", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, phone, service, date })
-})
-.then(response => {
+        // 當表單提交時
+        document.getElementById("bookingForm").addEventListener("submit", function(event) {
+            event.preventDefault();  // 阻止默認的表單提交行為
+            
+            // 獲取表單數據
+            let name = document.getElementById("name").value;
+            let phone = document.getElementById("phone").value;
+            let service = document.getElementById("service").value;
+            let date = document.getElementById("date").value;
+            
+            // 發送 POST 請求
+            fetch("https://script.google.com/macros/s/你的腳本ID/exec", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, phone, service, date })
+            })
+             .then(response => {
     console.log(response);  // 確保回應是正確的
     return response.text();
-})
-
-.then(text => {
-    let data;
-    try {
-        data = JSON.parse(text);  // JSON 解析
-    } catch (error) {
-        console.error("JSON 解析失敗：", error); // 解析錯誤
-        alert("伺服器回應格式錯誤！");
-        return;  // 防止進一步執行
-    }
-    if (data.message) {
-        alert(data.message);
-        document.getElementById("confirmation").style.display = "block";
-    } else {
-        throw new Error("伺服器回傳錯誤：" + JSON.stringify(data));
-    }
-})
-.catch(error => {
-    console.error("錯誤:", error);
-    alert("預約提交失敗，請稍後再試！");
-});
-
+})  
+            .then(data => {
+                if (data.message) {
+                    alert(data.message);  // 顯示伺服器回應的消息
+                    document.getElementById("confirmation").style.display = "block";  // 顯示預約確認信息
+                } else {
+                    throw new Error("伺服器回傳錯誤：" + JSON.stringify(data));
+                }
+            })
+            .catch(error => {
+                console.error("錯誤:", error);
+                alert("預約提交失敗，請稍後再試！");
+            });
+        });
     </script>
 </body>
 </html>
+
