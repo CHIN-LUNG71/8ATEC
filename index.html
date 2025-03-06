@@ -94,7 +94,8 @@
             let phone = document.getElementById("phone").value;
             let service = document.getElementById("service").value;
             let date = document.getElementById("date").value;
-            
+          // 打印出要傳送的資料
+           console.log("提交資料：", { name, phone, service, date });  
             // 發送 POST 請求
             fetch("https://script.google.com/macros/s/你的腳本ID/exec", {
                 method: "POST",
