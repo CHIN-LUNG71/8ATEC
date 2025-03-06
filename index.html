@@ -89,17 +89,12 @@ document.getElementById("bookingForm").addEventListener("submit", function(event
 <body >
 
 
-<button class ="buttonTT" onclick="javascript:location.href= '蔡金龍.html' " style="margin:5px;" >蔡金龍</button> <!--  固定在左下角的按鈕 -->
-<p class ="p3">  網頁名稱   </p>   <!--  讓只有代碼的頁面AAXX可以清楚的知道這個頁面內容 -->
-<button class ="css_button" onclick="javascript:location.href= '蔡金龍.html' " style="margin:5px;" >蔡金龍</button> <!--  style="margin:5px;"讓按鈕不會干涉到 -->
-
 <HR SIZE=5>   <!----------------------------------------------------------------------------->
 
 
     
 <hr id="myHR" >   <!----------------------------------------------------------------------------->
-    
-    
+        
 
     <div class="container">
         <h2>預約自行車服務</h2>
@@ -125,13 +120,6 @@ document.getElementById("bookingForm").addEventListener("submit", function(event
         <p id="confirmation" style="color: green; display: none;">您的預約已提交！</p>
     </div>
     
-    <script>
-        document.getElementById("bookingForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            document.getElementById("confirmation").style.display = "block";
-        });
-    </script>
- 
   
 </body>
 </html>
