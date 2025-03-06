@@ -11,34 +11,38 @@
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/popper.min.js"></script>
 
-  <form id="bookingForm">
-    <input type="text" id="name" placeholder="姓名" required>
-    <input type="text" id="phone" placeholder="電話" required>
-    <input type="text" id="service" placeholder="服務類型" required>
-    <input type="date" id="date" required>
-    <button type="submit">提交預約</button>
+<form id="bookingForm">
+  <input type="text" id="name" placeholder="姓名" required><br>
+  <input type="text" id="phone" placeholder="電話" required><br>
+  <select id="service">
+    <option value="保養">保養</option>
+    <option value="清洗">清洗</option>
+    <option value="維修">維修</option>
+  </select><br>
+  <input type="date" id="date" required><br>
+  <button type="submit">送出預約</button>
 </form>
-<!-- 250306 使表單能夠提交到 Apps Scriptcanvas -->
+
 <script>
 document.getElementById("bookingForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    
-    let formData = {
-        name: document.getElementById("name").value,
-        phone: document.getElementById("phone").value,
-        service: document.getElementById("service").value,
-        date: document.getElementById("date").value
-    };
-    fetch("https://script.google.com/macros/s/AKfycbxS3BITs5fcbisPtlERNMRiFzwNBoMg5D0tyuhQOcnXMsSDsl0Sh8jwk-mWAlt1RB-9Pg/exec", {
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: { "Content-Type": "application/json" }
-    })
-    .then(response => response.text())
-    .then(data => alert("預約成功！"))
-    .catch(error => alert("錯誤：" + error));
+  event.preventDefault(); // 防止表單刷新
+  
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let service = document.getElementById("service").value;
+  let date = document.getElementById("date").value;
+  
+  fetch("你的Apps Script Web App URL", {  // fetch("你的Apps Script Web App URL"🔹 改成你的 Web 應用程式網址
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, phone, service, date })
+  })
+  .then(response => response.json())
+  .then(data => alert(data.message))
+  .catch(error => console.error("錯誤:", error));
 });
 </script>
+
   
 <style>
         /* CSS rule to change the color of the specific <hr> element by its id */
