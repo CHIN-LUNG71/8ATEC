@@ -82,46 +82,37 @@
 
     <script>
 
-                        fetch("https://script.google.com/macros/s/AKfycbxS3BITs5fcbisPtlERNMRiFzwNBoMg5D0tyuhQOcnXMsSDsl0Sh8jwk-mWAlt1RB-9Pg/exec", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ name, phone, service, date })
-                })
-        // 確保 HTML 內容載入後才執行
-        document.addEventListener("DOMContentLoaded", function() {
-            document.getElementById("bookingForm").addEventListener("submit", function(event) {
-                event.preventDefault(); // 防止表單刷新
+fetch("https://script.google.com/macros/s/你的腳本ID/exec", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, phone, service, date })
+})
+.then(response => {
+    console.log(response);  // 確保回應是正確的
+    return response.text();
+})
 
-                let name = document.getElementById("name").value;
-                let phone = document.getElementById("phone").value;
-                let service = document.getElementById("service").value;
-                let date = document.getElementById("date").value;
+.then(text => {
+    let data;
+    try {
+        data = JSON.parse(text);  // JSON 解析
+    } catch (error) {
+        console.error("JSON 解析失敗：", error); // 解析錯誤
+        alert("伺服器回應格式錯誤！");
+        return;  // 防止進一步執行
+    }
+    if (data.message) {
+        alert(data.message);
+        document.getElementById("confirmation").style.display = "block";
+    } else {
+        throw new Error("伺服器回傳錯誤：" + JSON.stringify(data));
+    }
+})
+.catch(error => {
+    console.error("錯誤:", error);
+    alert("預約提交失敗，請稍後再試！");
+});
 
-
-                 //先使用 .text() 取得伺服器回應，再手動解析 JSON，避免直接 .json() 導致錯誤
-                .then(response => response.text()) // 先轉換成文字以檢查回應內容
-                .then(text => {
-                    console.log("伺服器回應：", text);//方便 Debug，如果 text 不是 JSON 格式，可以直接看到回應內容
-                    let data;
-                    try {
-                        data = JSON.parse(text);
-                    } catch (error) {
-                        throw new Error("JSON 解析失敗：" + text);//避免非 JSON 格式的錯誤回應導致 fetch() 崩潰。
-                    }
-
-                    if (data.message) {
-                        alert(data.message);
-                        document.getElementById("confirmation").style.display = "block";
-                    } else {
-                        throw new Error("伺服器回傳錯誤：" + JSON.stringify(data));
-                    }
-                })
-                .catch(error => {
-                    console.error("錯誤:", error);
-                    alert("預約提交失敗，請稍後再試！");
-                });
-            });
-        });
     </script>
 </body>
 </html>
