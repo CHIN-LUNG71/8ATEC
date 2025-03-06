@@ -2,7 +2,7 @@
     console.log(response);  // 確保回應是正確的
     return response.text();
 })  
-008
+009
 
 <!DOCTYPE html>
 <html>
@@ -101,15 +101,14 @@
             fetch("https://script.google.com/macros/s/AKfycbxS3BITs5fcbisPtlERNMRiFzwNBoMg5D0tyuhQOcnXMsSDsl0Sh8jwk-mWAlt1RB-9Pg/exec", {
                 method: "POST",
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                  body: new URLSearchParams({ name, phone, service, date }).toString() // 確保符合 Google Apps Script 的解析格式
-                   })
-             mode: 'cors'  // 確保設置為 'cors'
+                  body: new URLSearchParams({ name, phone, service, date }).toString(), // 確保符合 Google Apps Script 的解析格式
+                  mode: 'cors'  // 確保設置為 'cors'
             })
 
              .then(response => {
     console.log("伺服器回應狀態碼: ", response.status); // 打印回應狀態碼
     return response.json();  // 解析 JSON
-})
+              })
             .then(data => {
                 if (data.message) {
                     alert(data.message);  // 顯示伺服器回應的消息
