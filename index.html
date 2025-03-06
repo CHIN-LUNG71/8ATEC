@@ -2,7 +2,7 @@
     console.log(response);  // 確保回應是正確的
     return response.text();
 })  
-009
+010
 
 <!DOCTYPE html>
 <html>
@@ -113,7 +113,8 @@
                 if (data.message) {
                     alert(data.message);  // 顯示伺服器回應的消息
                     document.getElementById("confirmation").style.display = "block";  // 顯示預約確認信息
-                } else {
+                } 
+                else {
                     throw new Error("伺服器回傳錯誤：" + JSON.stringify(data));
                 }
             })
