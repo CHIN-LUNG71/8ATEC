@@ -30,6 +30,13 @@
   }
 }
   </script>
+  <form id="bookingForm">
+    <input type="text" id="name" placeholder="姓名" required>
+    <input type="text" id="phone" placeholder="電話" required>
+    <input type="text" id="service" placeholder="服務類型" required>
+    <input type="date" id="date" required>
+    <button type="submit">提交預約</button>
+</form>
 <!-- 250306 使表單能夠提交到 Apps Scriptcanvas -->
 <script>
 document.getElementById("bookingForm").addEventListener("submit", function(event) {
