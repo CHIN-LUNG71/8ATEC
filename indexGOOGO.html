@@ -1,65 +1,77 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Firebase 留言板</title>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firebase Chat</title>
+  <!-- 引入 Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+
+  <script>
+    // Firebase 配置，這是你從 Firebase Console 複製的資訊
+    const firebaseConfig = {
+      apiKey: "你的API金鑰",  // 請替換為 Firebase Console 中的 API 金鑰
+      authDomain: "chatt01.firebaseapp.com",  // 你的專案 ID
+      projectId: "chatt01",  // 你的專案 ID
+      storageBucket: "chatt01.appspot.com",  // 你的專案 ID + ".appspot.com"
+      messagingSenderId: "573164583696",  // 你的發送 ID
+      appId: "1:573164583696:web:abcd1234"  // 你的 App ID
+    };
+
+    // 初始化 Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore(app);
+  </script>
 </head>
 <body>
-    <h2>🔥 Firebase 留言板</h2>
-    
-    <input type="text" id="name" placeholder="你的名字">
-    <input type="text" id="message" placeholder="輸入留言">
-    <button onclick="sendMessage()">送出留言</button>
+  <h1>Firebase Chat</h1>
 
-    <h3>留言內容：</h3>
-    <ul id="messagesList"></ul>
+  <!-- 用戶輸入留言 -->
+  <div>
+    <textarea id="message" placeholder="輸入留言..."></textarea>
+    <button id="sendButton">發送留言</button>
+  </div>
 
-    <script>
-        // 🔥 初始化 Firebase
-        const firebaseConfig = {
-            apiKey: "你的API金鑰",
-            authDomain: "chatT01.firebaseapp.com",
-            projectId: "chatt01",
-            storageBucket: "chatt01.appspot.com",
-            messagingSenderId: "573164583696",
-            appId: "1:573164583696:web:abcd1234"
-        };
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
+  <!-- 顯示留言區域 -->
+  <div id="messages"></div>
 
-        // 🚀 發送留言
-        function sendMessage() {
-            const name = document.getElementById("name").value;
-            const message = document.getElementById("message").value;
+  <script>
+    // 取得發送留言按鈕和留言區域
+    const sendButton = document.getElementById('sendButton');
+    const messagesDiv = document.getElementById('messages');
+    const messageInput = document.getElementById('message');
 
-            if (name && message) {
-                db.collection("messages").add({
-                    name: name,
-                    message: message,
-                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
-                }).then(() => {
-                    document.getElementById("message").value = "";
-                }).catch(error => console.error("留言失敗:", error));
-            }
+    // 發送留言到 Firestore
+    sendButton.addEventListener('click', async () => {
+      const messageText = messageInput.value.trim();
+      if (messageText) {
+        try {
+          // 將留言儲存到 Firestore
+          await db.collection('messages').add({
+            text: messageText,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+          });
+          messageInput.value = ''; // 清空輸入框
+        } catch (error) {
+          console.error("發送留言失敗：", error);
         }
+      }
+    });
 
-        // 📝 讀取 Firestore 中的留言
-        db.collection("messages")
-            .orderBy("timestamp", "desc")
-            .onSnapshot(snapshot => {
-                const messagesList = document.getElementById("messagesList");
-                messagesList.innerHTML = "";
-                snapshot.forEach(doc => {
-                    const data = doc.data();
-                    const li = document.createElement("li");
-                    li.textContent = `${data.name}: ${data.message}`;
-                    messagesList.appendChild(li);
-                });
-            });
-    </script>
+    // 監聽 Firestore 中的留言變化
+    db.collection('messages').orderBy('timestamp')
+      .onSnapshot(snapshot => {
+        messagesDiv.innerHTML = ''; // 清空當前留言
+        snapshot.forEach(doc => {
+          const message = doc.data();
+          const messageDiv = document.createElement('div');
+          messageDiv.textContent = message.text;
+          messagesDiv.appendChild(messageDiv);
+        });
+      });
+  </script>
 </body>
 </html>
+
 
