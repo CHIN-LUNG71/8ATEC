@@ -1,4 +1,4 @@
-016
+017
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,6 +38,7 @@
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
                 body: new URLSearchParams({ name, message }).toString() // 提交的資料
+                mode: 'no-cors'  // 跳過 CORS 檢查
             })
             .then(response => response.json())  // 解析返回的 JSON
             .then(data => {
