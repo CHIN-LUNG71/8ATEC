@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firebase Demo</title>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script> <!-- 如需身份驗證功能 -->
+
+  <script>
+    // Firebase 配置（從 Firebase Console 取得的）
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "your-project-id.firebaseapp.com",
+      projectId: "your-project-id",
+      storageBucket: "your-project-id.appspot.com",
+      messagingSenderId: "your-sender-id",
+      appId: "your-app-id"
+    };
+
+    // 初始化 Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore(app);
+
+    // 在這裡你可以加入其他 Firebase 功能的代碼
+  </script>
+</head>
+<body>
+  <h1>Firebase Demo Page</h1>
+
+  <p>這是一個簡單的 Firebase 頁面，請檢查控制台查看錯誤或操作結果。</p>
+</body>
+</html>
