@@ -4,10 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Firebase Chat</title>
-  
+
+  <!-- 使用 type="module" 加載 Firebase SDK -->
   <script type="module">
+    // 從 Firebase 的模組中導入所需的功能
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
     import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
     // Firebase 配置，這是你從 Firebase Console 複製的資訊
     const firebaseConfig = {
       apiKey: "AIzaSyBZPuA8Ywm6JotwfhVPLdsaEJP-1gm0xKE",  // 請替換為 Firebase Console 中的 API 金鑰
@@ -19,9 +22,49 @@
     };
 
     // 初始化 Firebase
-    const app = firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore(app);
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app); // 獲取 Firestore 實例
+
+    // 發送留言
+    async function sendMessage(messageText) {
+      if (messageText) {
+        try {
+          await addDoc(collection(db, "messages"), {
+            text: messageText,
+            timestamp: serverTimestamp()
+          });
+        } catch (e) {
+          console.error("錯誤：發送留言失敗", e);
+        }
+      }
+    }
+
+    // 監聽 Firestore 中的留言變化
+    function listenMessages() {
+      const q = query(collection(db, "messages"), orderBy("timestamp"));
+      onSnapshot(q, (querySnapshot) => {
+        const messagesDiv = document.getElementById('messages');
+        messagesDiv.innerHTML = ''; // 清空留言區域
+        querySnapshot.forEach((doc) => {
+          const message = doc.data();
+          const messageDiv = document.createElement('div');
+          messageDiv.textContent = message.text;
+          messagesDiv.appendChild(messageDiv);
+        });
+      });
+    }
+
+    // 設定留言按鈕事件
+    document.getElementById('sendButton').addEventListener('click', () => {
+      const messageInput = document.getElementById('message');
+      sendMessage(messageInput.value.trim());
+      messageInput.value = ''; // 清空輸入框
+    });
+
+    // 啟動留言監聽
+    listenMessages();
   </script>
+
 </head>
 <body>
   <h1>Firebase Chat</h1>
@@ -35,42 +78,5 @@
   <!-- 顯示留言區域 -->
   <div id="messages"></div>
 
-  <script>
-    // 取得發送留言按鈕和留言區域
-    const sendButton = document.getElementById('sendButton');
-    const messagesDiv = document.getElementById('messages');
-    const messageInput = document.getElementById('message');
-
-    // 發送留言到 Firestore
-    sendButton.addEventListener('click', async () => {
-      const messageText = messageInput.value.trim();
-      if (messageText) {
-        try {
-          // 將留言儲存到 Firestore
-          await db.collection('messages').add({
-            text: messageText,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp()
-          });
-          messageInput.value = ''; // 清空輸入框
-        } catch (error) {
-          console.error("發送留言失敗：", error);
-        }
-      }
-    });
-
-    // 監聽 Firestore 中的留言變化
-    db.collection('messages').orderBy('timestamp')
-      .onSnapshot(snapshot => {
-        messagesDiv.innerHTML = ''; // 清空當前留言
-        snapshot.forEach(doc => {
-          const message = doc.data();
-          const messageDiv = document.createElement('div');
-          messageDiv.textContent = message.text;
-          messagesDiv.appendChild(messageDiv);
-        });
-      });
-  </script>
 </body>
 </html>
-
-
