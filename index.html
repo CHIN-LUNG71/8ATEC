@@ -1,58 +1,109 @@
-017
+018
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>表單提交範例</title>
+    <title>留言系統</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
 </head>
 <body>
-    <h2>留言表單</h2>
-    <form id="contactForm">
-        <label for="name">姓名:</label>
-        <input type="text" id="name" placeholder="您的姓名" required>
-        <br><br>
-        <label for="message">留言:</label>
-        <textarea id="message" placeholder="您的留言" required></textarea>
-        <br><br>
-        <button type="submit">提交</button>
-    </form>
+    <div class="container">
+        <h2>留言系統</h2>
+        <form id="commentForm">
+            <label for="name">名稱：</label>
+            <input type="text" id="name" placeholder="您的名稱" required>
+
+            <label for="message">留言：</label>
+            <textarea id="message" rows="4" placeholder="您的留言" required></textarea>
+
+            <button type="submit">提交留言</button>
+        </form>
+
+        <p id="confirmation" style="color: green; display: none;">留言已提交，感謝您的反饋！</p>
+        <p id="errorMessage" style="color: red; display: none;">提交失敗，請稍後再試！</p>
+    </div>
 
     <script>
-        // 當表單提交時
-        document.getElementById("contactForm").addEventListener("submit", function(event) {
-            event.preventDefault();  // 阻止表單默認提交行為
-            
-            // 獲取表單數據
-            let name = document.getElementById("name").value;
-            let message = document.getElementById("message").value;
+        document.getElementById("commentForm").addEventListener("submit", function(event) {
+            event.preventDefault();  // 阻止默認表單提交
 
-            // 打印出要傳送的資料到控制台
-            console.log("提交的資料:", { name, message });
+            const name = document.getElementById("name").value;
+            const message = document.getElementById("message").value;
 
-            // 使用 Fetch API 提交資料
-            fetch('https://script.google.com/macros/s/AKfycbweoB0K6eq3cOC5rnWMjuQub17KgSVqmi0Y31fWVRLsvcb18KNExjuBXPFjS3IM6a_A5Q/exec', {
+            // GitHub API 的設置
+            const repoOwner = 'your-github-username';  // 您的 GitHub 用戶名
+            const repoName = 'your-repository-name';  // 您的 GitHub 倉庫名稱
+            const token = 'your-github-personal-access-token';  // 您的 GitHub 個人訪問令牌
+            const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/issues`;
+
+            // 構建提交的資料
+            const issueData = {
+                title: `留言來自 ${name}`,
+                body: message
+            };
+
+            // 提交留言至 GitHub
+            fetch(apiUrl, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
+                    'Authorization': `token ${token}`,
+                    'Content-Type': 'application/json'
                 },
-                body: new URLSearchParams({ name, message }).toString() // 提交的資料
-                mode: 'no-cors'  // 跳過 CORS 檢查
+                body: JSON.stringify(issueData)
             })
-            .then(response => response.json())  // 解析返回的 JSON
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('提交失敗');
+            })
             .then(data => {
-                console.log('成功:', data);
-                alert(data.message); // 顯示伺服器返回的訊息
+                console.log('留言已提交:', data);
+                document.getElementById("confirmation").style.display = 'block';
+                document.getElementById("errorMessage").style.display = 'none';
             })
             .catch(error => {
                 console.error('錯誤:', error);
-                alert("提交失敗，請稍後再試！");
+                document.getElementById("errorMessage").style.display = 'block';
+                document.getElementById("confirmation").style.display = 'none';
             });
         });
     </script>
 </body>
 </html>
+
 
 
 
