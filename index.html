@@ -1,107 +1,96 @@
-018
+0000
+
+
+            //const token = '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';  // 您的 GitHub 個人訪問令牌
+           // const token = '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';
+
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>留言系統</title>
+    <title>GitHub 留言板</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            padding: 20px;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        input, textarea, button {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        button {
-            background-color: #28a745;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #218838;
-        }
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; }
+        input, textarea { width: 100%; margin: 10px 0; padding: 8px; }
+        button { padding: 10px; background-color: blue; color: white; border: none; cursor: pointer; }
+        .message { border: 1px solid #ddd; padding: 10px; margin: 10px 0; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>留言系統</h2>
-        <form id="commentForm">
-            <label for="name">名稱：</label>
-            <input type="text" id="name" placeholder="您的名稱" required>
 
-            <label for="message">留言：</label>
-            <textarea id="message" rows="4" placeholder="您的留言" required></textarea>
+    <h2>GitHub 留言板</h2>
 
-            <button type="submit">提交留言</button>
-        </form>
+    <!-- 留言輸入區 -->
+    <input type="text" id="title" placeholder="請輸入標題">
+    <textarea id="body" placeholder="請輸入留言內容"></textarea>
+    <button onclick="submitMessage()">提交留言</button>
 
-        <p id="confirmation" style="color: green; display: none;">留言已提交，感謝您的反饋！</p>
-        <p id="errorMessage" style="color: red; display: none;">提交失敗，請稍後再試！</p>
-    </div>
+    <h3>留言列表</h3>
+    <div id="messages"></div>
 
     <script>
-        document.getElementById("commentForm").addEventListener("submit", function(event) {
-            event.preventDefault();  // 阻止默認表單提交
+        const repoOwner = "CHIN-LUNG71"; // 你的 GitHub 用戶名
+        const repoName = "8ATEC"; // 你的儲存庫名稱
+        const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/issues`;
 
-            const name = document.getElementById("name").value;
-            const message = document.getElementById("message").value;
+        // 🚀 讀取留言（GitHub Issues）
+        function loadMessages() {
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    let messagesContainer = document.getElementById("messages");
+                    messagesContainer.innerHTML = ""; // 清空舊資料
 
-            // GitHub API 的設置
-            const repoOwner = 'CHIN-LUNG71';  // 您的 GitHub 用戶名
-            const repoName = '8ATEC';  // 您的 GitHub 倉庫名稱
-            //const token = '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';  // 您的 GitHub 個人訪問令牌
-            const token = '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';
-            const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/issues`;
+                    data.forEach(issue => {
+                        let messageElement = document.createElement("div");
+                        messageElement.classList.add("message");
+                        messageElement.innerHTML = `
+                            <h3>${issue.title}</h3>
+                            <p>${issue.body ? issue.body : "（沒有內容）"}</p>
+                            <a href="${issue.html_url}" target="_blank">查看 GitHub Issue</a>
+                        `;
+                        messagesContainer.appendChild(messageElement);
+                    });
+                })
+                .catch(error => console.error("Error loading messages:", error));
+        }
 
-            // 構建提交的資料
-            const issueData = {
-                title: `留言來自 ${name}`,
-                body: message
-            };
+        // 🚀 提交留言（新增 Issue）
+        function submitMessage() {
+            const title = document.getElementById("title").value;
+            const body = document.getElementById("body").value;
+            
+            if (!title || !body) {
+                alert("請輸入標題和內容");
+                return;
+            }
 
-            // 提交留言至 GitHub
             fetch(apiUrl, {
-                method: 'POST',
+                method: "POST",
                 headers: {
-                    'Authorization': `token ${token}`,
-                    'Content-Type': 'application/json'
+                    "Authorization": `Bearer 你的_GitHub_Token`, // ⚠️ 不能放在前端，應該用後端處理
+                    "Accept": "application/vnd.github.v3+json",
+                    "Content-Type": "application/json"
                 },
-                body: JSON.stringify(issueData)
+                body: JSON.stringify({ title, body })
             })
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                }
-                throw new Error('提交失敗');
-            })
+            .then(response => response.json())
             .then(data => {
-                console.log('留言已提交:', data);
-                document.getElementById("confirmation").style.display = 'block';
-                document.getElementById("errorMessage").style.display = 'none';
+                console.log("Issue Created:", data);
+                alert("留言成功！");
+                document.getElementById("title").value = "";
+                document.getElementById("body").value = "";
+                loadMessages(); // 重新載入留言
             })
-            .catch(error => {
-                console.error('錯誤:', error);
-                document.getElementById("errorMessage").style.display = 'block';
-                document.getElementById("confirmation").style.display = 'none';
-            });
-        });
+            .catch(error => console.error("Error:", error));
+        }
+
+        // 🚀 頁面載入時讀取留言
+        loadMessages();
     </script>
+
 </body>
 </html>
 
