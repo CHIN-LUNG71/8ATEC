@@ -1,36 +1,36 @@
-015
+016
 
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>留言功能</title>
+    <title>表單提交範例</title>
 </head>
 <body>
-    <h1>留言板</h1>
-    <form id="commentForm">
+    <h2>留言表單</h2>
+    <form id="contactForm">
         <label for="name">姓名:</label>
-        <input type="text" id="name" required><br><br>
-
+        <input type="text" id="name" placeholder="您的姓名" required>
+        <br><br>
         <label for="message">留言:</label>
-        <textarea id="message" required></textarea><br><br>
-
-        <button type="submit">提交留言</button>
+        <textarea id="message" placeholder="您的留言" required></textarea>
+        <br><br>
+        <button type="submit">提交</button>
     </form>
 
-    <p id="responseMessage" style="color: green; display: none;">您的留言已提交！</p>
-
     <script>
-        document.getElementById("commentForm").addEventListener("submit", function(event) {
-            event.preventDefault();  // 阻止表單提交
+        // 當表單提交時
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();  // 阻止表單默認提交行為
+            
+            // 獲取表單數據
+            let name = document.getElementById("name").value;
+            let message = document.getElementById("message").value;
 
-            // 獲取表單資料
-            const name = document.getElementById("name").value;
-            const message = document.getElementById("message").value;
-  
-            // 打印出要傳送的資料
-             console.log("提交資料:", { name, message });
+            // 打印出要傳送的資料到控制台
+            console.log("提交的資料:", { name, message });
+
             // 使用 Fetch API 提交資料
             fetch('https://script.google.com/macros/s/AKfycbweoB0K6eq3cOC5rnWMjuQub17KgSVqmi0Y31fWVRLsvcb18KNExjuBXPFjS3IM6a_A5Q/exec', {
                 method: 'POST',
@@ -39,20 +39,19 @@
                 },
                 body: new URLSearchParams({ name, message }).toString() // 提交的資料
             })
-            .then(response => response.json())
+            .then(response => response.json())  // 解析返回的 JSON
             .then(data => {
-                if (data.message) {
-                    document.getElementById("responseMessage").style.display = "block";  // 顯示成功訊息
-                    document.getElementById("commentForm").reset();  // 重置表單
-                }
+                console.log('成功:', data);
+                alert(data.message); // 顯示伺服器返回的訊息
             })
             .catch(error => {
-                console.error("錯誤:", error);
+                console.error('錯誤:', error);
                 alert("提交失敗，請稍後再試！");
             });
         });
     </script>
 </body>
 </html>
+
 
 
