@@ -1,4 +1,4 @@
-014
+015
 
 <!DOCTYPE html>
 <html lang="zh">
@@ -28,7 +28,9 @@
             // 獲取表單資料
             const name = document.getElementById("name").value;
             const message = document.getElementById("message").value;
-
+  
+            // 打印出要傳送的資料
+             console.log("提交資料:", { name, message });
             // 使用 Fetch API 提交資料
             fetch('https://script.google.com/macros/s/AKfycbweoB0K6eq3cOC5rnWMjuQub17KgSVqmi0Y31fWVRLsvcb18KNExjuBXPFjS3IM6a_A5Q/exec', {
                 method: 'POST',
