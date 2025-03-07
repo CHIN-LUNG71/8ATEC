@@ -3,7 +3,7 @@
 const repoOwner = "CHIN-LUNG71"; // 你的 GitHub 用戶名
 const repoName = "8ATEC"; // 你的儲存庫名稱
 const token = "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"; // 你的 GitHub Token
-const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/issues`;
+const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/issues/1`;
 
 // 🚀 讀取留言（GitHub Issues）
 function loadMessages() {
