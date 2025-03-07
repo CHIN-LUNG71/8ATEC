@@ -7,24 +7,33 @@ const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/issues/1`;
 
 // 🚀 讀取留言（GitHub Issues）
 function loadMessages() {
-    fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-            let messagesContainer = document.getElementById("messages");
-            messagesContainer.innerHTML = ""; // 清空舊資料
+fetch(apiUrl, {
+    method: "POST",
+    headers: {
+        "Authorization": `token ${token}`,
+        "Accept": "application/vnd.github.v3+json",
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ title, body })
+})
+.then(response => {
+    if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+})
+.then(data => {
+    console.log("Issue Created:", data);
+    alert("留言成功！");
+    document.getElementById("title").value = "";
+    document.getElementById("body").value = "";
+    loadMessages(); // 重新載入留言
+})
+.catch(error => {
+    console.error("Error:", error);
+    alert(`發生錯誤: ${error.message}`);
+});
 
-            data.forEach(issue => {
-                let messageElement = document.createElement("div");
-                messageElement.classList.add("message");
-                messageElement.innerHTML = `
-                    <h3>${issue.title}</h3>
-                    <p>${issue.body ? issue.body : "（沒有內容）"}</p>
-                    <a href="${issue.html_url}" target="_blank">查看 GitHub Issue</a>
-                `;
-                messagesContainer.appendChild(messageElement);
-            });
-        })
-        .catch(error => console.error("Error loading messages:", error));
 }
 
 // 🚀 提交留言（新增 Issue）
