@@ -1,122 +1,56 @@
-013
+014
 
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>自行車維修 & 保養預約</title>
-
-    <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/蔡金龍.css">  
-
-    <style>
-        /* CSS 設定 */
-        #myHR {
-            border: none;
-            height: 10px;
-            background-color: rgb(255, 0, 0);
-            margin-right: 50px;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            text-align: center;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        input, select, button {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        button {
-            background-color: #28a745;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #218838;
-        }
-    </style>
+    <title>留言功能</title>
 </head>
-
 <body>
-    <hr id="myHR">
-    
-    <div class="container">
-        <h2>預約自行車服務</h2>
-        <form id="bookingForm">
-            <label for="name">姓名：</label>
-            <input type="text" id="name" placeholder="姓名" required>
-            
-            <label for="phone">電話：</label>
-            <input type="tel" id="phone" placeholder="電話" required>
-            
-            <label for="service">服務(保養/維修)：</label>
-            <input type="text" id="service" placeholder="服務" required>
-   
-            
-            <button type="submit">提交預約</button>
-        </form>
-        <p id="confirmation" style="color: green; display: none;">您的預約已提交！</p>
-    </div>
+    <h1>留言板</h1>
+    <form id="commentForm">
+        <label for="name">姓名:</label>
+        <input type="text" id="name" required><br><br>
+
+        <label for="message">留言:</label>
+        <textarea id="message" required></textarea><br><br>
+
+        <button type="submit">提交留言</button>
+    </form>
+
+    <p id="responseMessage" style="color: green; display: none;">您的留言已提交！</p>
 
     <script>
-        // 當表單提交時
-        document.getElementById("bookingForm").addEventListener("submit", function(event) {
-            event.preventDefault();  // 阻止默認的表單提交行為
-            
-            // 獲取表單數據
-            let name = document.getElementById("name").value;
-            let phone = document.getElementById("phone").value;
-            let service = document.getElementById("service").value;
-            
-          // 打印出要傳送的資料
-           console.log("提交資料：", { name, phone, service });  
-            // 發送 POST 請求
-            fetch("https://script.google.com/macros/s/AKfycbweoB0K6eq3cOC5rnWMjuQub17KgSVqmi0Y31fWVRLsvcb18KNExjuBXPFjS3IM6a_A5Q/exec", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                  body: new URLSearchParams({ name, phone, service }).toString(), // 確保符合 Google Apps Script 的解析格式
-                  mode: 'cors'  // 確保設置為 'cors'
-            })
+        document.getElementById("commentForm").addEventListener("submit", function(event) {
+            event.preventDefault();  // 阻止表單提交
 
-             .then(response => {
-               console.log("伺服器回應狀態碼: ", response.status); // 打印回應狀態碼
-               return response.json();  // 解析 JSON
-              })
+            // 獲取表單資料
+            const name = document.getElementById("name").value;
+            const message = document.getElementById("message").value;
+
+            // 使用 Fetch API 提交資料
+            fetch('https://script.google.com/macros/s/AKfycbweoB0K6eq3cOC5rnWMjuQub17KgSVqmi0Y31fWVRLsvcb18KNExjuBXPFjS3IM6a_A5Q/exec', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({ name, message }).toString() // 提交的資料
+            })
+            .then(response => response.json())
             .then(data => {
                 if (data.message) {
-                    alert(data.message);  // 顯示伺服器回應的消息
-                    document.getElementById("confirmation").style.display = "block";  // 顯示預約確認信息
-                } 
-                else {
-                    throw new Error("伺服器回傳錯誤：" + JSON.stringify(data));
+                    document.getElementById("responseMessage").style.display = "block";  // 顯示成功訊息
+                    document.getElementById("commentForm").reset();  // 重置表單
                 }
             })
             .catch(error => {
                 console.error("錯誤:", error);
-                alert("預約提交失敗，請稍後再試！");
+                alert("提交失敗，請稍後再試！");
             });
         });
     </script>
 </body>
 </html>
+
 
