@@ -1,4 +1,4 @@
-00001
+00002
 
 
             //const token = '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';  // 您的 GitHub 個人訪問令牌
@@ -33,7 +33,7 @@
     <script>
         const repoOwner = "CHIN-LUNG71"; // 你的 GitHub 用戶名
         const repoName = "8ATEC"; // 你的儲存庫名稱
-                const token = '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';
+                const token = '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';
         const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/issues`;
 
         // 🚀 讀取留言（GitHub Issues）
@@ -71,7 +71,7 @@
             fetch(apiUrl, {
                 method: "POST",
                 headers: {
-                    "Authorization": `Bearer 你的_GitHub_Token`, // ⚠️ 不能放在前端，應該用後端處理
+                    "Authorization": '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', // ⚠️ 不能放在前端，應該用後端處理
                     "Accept": "application/vnd.github.v3+json",
                     "Content-Type": "application/json"
                 },
