@@ -37,15 +37,16 @@ function submitMessage() {
         return;
     }
 
-    fetch(apiUrl, {
-        method: "POST",
-        headers: {
-            "Authorization": `token ${token}`, // 使用正確的 Token
-            "Accept": "application/vnd.github.v3+json",
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ title, body })
-    })
+fetch(apiUrl, {
+    method: "POST",
+    headers: {
+        "Authorization": `token ${token}`,
+        "Accept": "application/vnd.github.v3+json",
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ title, body })
+})
+
     .then(response => response.json())
     .then(data => {
         console.log("Issue Created:", data);
