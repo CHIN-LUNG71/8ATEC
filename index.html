@@ -93,8 +93,8 @@
           // 打印出要傳送的資料
            console.log("提交資料：", { name, phone, service, date });  
             // 發送 POST 請求
-         
-            fetch("https://script.google.com/macros/s/AKfycbxS3BITs5fcbisPtlERNMRiFzwNBoMg5D0tyuhQOcnXMsSDsl0Sh8jwk-mWAlt1RB-9Pg/exec", {
+      
+            fetch("https://script.google.com/macros/s/AKfycbweoB0K6eq3cOC5rnWMjuQub17KgSVqmi0Y31fWVRLsvcb18KNExjuBXPFjS3IM6a_A5Q/exec", {
                 method: "POST",
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
                   body: new URLSearchParams({ name, phone, service, date }).toString(), // 確保符合 Google Apps Script 的解析格式
