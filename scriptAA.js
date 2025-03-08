@@ -10,7 +10,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyAYzyD_ayAh24zpcfCI_AShXWj-QcD_O78",
   authDomain: "tsai-e32f5.firebaseapp.com",
   projectId: "tsai-e32f5",
-  storageBucket: "tsai-e32f5..appspot.com",
+  storageBucket: "tsai-e32f5.appspot.com",
   messagingSenderId: "504906565418",
   appId: "1:504906565418:web:1eff88b8c1fca8441ec053",
   measurementId: "G-5HMQQ13YCJ"
