@@ -37,13 +37,20 @@ sendButton.addEventListener("click", async () => {
   }
 });
 
-// 監聽 Firebase 更新
+// 監聽 Firebase 更新，並顯示留言與時間
 onSnapshot(query(collection(db, "messages"), orderBy("timestamp", "asc")), (snapshot) => {
-  messagesDiv.innerHTML = "";
+  messagesDiv.innerHTML = "";  // 清空舊的內容
   snapshot.forEach((doc) => {
     const messageData = doc.data();
     const messageElement = document.createElement("p");
-    messageElement.textContent = messageData.text;
-    messagesDiv.appendChild(messageElement);
+
+    // 轉換 Firebase Timestamp 為可讀時間
+    let timeString = "時間不明";  // 預設文字
+    if (messageData.timestamp) {
+      const date = messageData.timestamp.toDate();  // 轉換 Firestore Timestamp
+      timeString = date.toLocaleString("zh-TW", { 
+        hour: "2-digit", 
+        minute: "2-digit", 
+        second: "2-digit"
   });
 });
