@@ -53,4 +53,9 @@ onSnapshot(query(collection(db, "messages"), orderBy("timestamp", "asc")), (snap
         minute: "2-digit", 
         second: "2-digit"
   });
+}
+        // 顯示留言時間和內容
+    messageElement.textContent = `[${timeString}] ${messageData.text}`;
+    messagesDiv.appendChild(messageElement);
+  });
 });
