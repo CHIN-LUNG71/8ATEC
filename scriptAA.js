@@ -19,3 +19,5 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+//如要透過 Firebase 託管功能來代管您的網站，則必須使用 Firebase CLI 這項指令列工具
+npm install -g firebase-tools
