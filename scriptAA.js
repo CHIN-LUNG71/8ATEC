@@ -21,4 +21,4 @@ const firebaseConfig = {
     const db = getFirestore(app);
 
 //如要透過 Firebase 託管功能來代管您的網站，則必須使用 Firebase CLI 這項指令列工具
-npm install -g firebase-tools
+//npm install -g firebase-tools  //F12 有問題我先屏蔽
