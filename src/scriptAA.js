@@ -23,6 +23,7 @@ const firebaseConfig = {
 // 取得 UI 元素
 const nameInput = document.getElementById("name");
 const phoneInput = document.getElementById("phone");
+const dateInput = document.getElementById("date");
 const messageInput = document.getElementById("message");
 const sendButton = document.getElementById("sendButton");
 const messagesDiv = document.getElementById("messages");
@@ -31,11 +32,13 @@ const messagesDiv = document.getElementById("messages");
 sendButton.addEventListener("click", async () => {
     const name = nameInput.value.trim();
   const phone = phoneInput.value.trim();
+   const date = dateInput.value.trim();
   const text = messageInput.value.trim();
-  if (name && phone && text) {
+  if (name && phone && date && text) {
     await addDoc(collection(db, "messages"), {
       name,
       phone,
+      date,
       text,
       timestamp: serverTimestamp()
     });
@@ -43,6 +46,7 @@ sendButton.addEventListener("click", async () => {
     // 清空輸入欄
     nameInput.value = "";
     phoneInput.value = "";
+    dateInput.value = "";
     messageInput.value = "";
   }
 });
