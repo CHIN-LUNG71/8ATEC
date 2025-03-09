@@ -32,13 +32,17 @@ const messagesDiv = document.getElementById("messages");
 sendButton.addEventListener("click", async () => {
     const name = nameInput.value.trim();
   const phone = phoneInput.value.trim();
-   const date = dateInput.value.trim();
+   
+  const dateStr = dateInput.value.trim(); // 取得 YYYY-MM-DD 格式的字串
   const text = messageInput.value.trim();
   if (name && phone && date && text) {
+    // 轉換為 Date 物件
+    const dateObj = new Date(dateStr + "T00:00:00"); // 確保時區為當地時間
+    
     await addDoc(collection(db, "messages"), {
       name,
       phone,
-      date,
+      date: dateObj, // 儲存為 Date 物件
       text,
       timestamp: serverTimestamp()
     });
@@ -68,8 +72,14 @@ onSnapshot(query(collection(db, "messages"), orderBy("timestamp", "asc")), (snap
         second: "2-digit"
   });
 }
+        // 格式化日期
+    let dateString = "未設定日期";
+    if (messageData.date) {
+      const dateObj = new Date(messageData.date.seconds * 1000); // Firestore Timestamp 轉換
+      dateString = dateObj.toISOString().split("T")[0]; // 轉換回 YYYY-MM-DD
+    }
         // 顯示留言時間和內容
-    messageElement.textContent = `[${timeString}] ${messageData.text}`;
+    messageElement.textContent = `[${timeString}] 服務內容：${messageData.text}`;
     messagesDiv.appendChild(messageElement);
   });
 });
