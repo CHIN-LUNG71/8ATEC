@@ -21,18 +21,28 @@ const firebaseConfig = {
     const db = getFirestore(app);
 
 // 取得 UI 元素
+const nameInput = document.getElementById("name");
+const phoneInput = document.getElementById("phone");
 const messageInput = document.getElementById("message");
 const sendButton = document.getElementById("sendButton");
 const messagesDiv = document.getElementById("messages");
 
 // 發送留言功能
 sendButton.addEventListener("click", async () => {
+    const name = nameInput.value.trim();
+  const phone = phoneInput.value.trim();
   const text = messageInput.value.trim();
-  if (text) {
+  if (name && phone && text) {
     await addDoc(collection(db, "messages"), {
+      name,
+      phone,
       text,
       timestamp: serverTimestamp()
     });
+
+    // 清空輸入欄
+    nameInput.value = "";
+    phoneInput.value = "";
     messageInput.value = "";
   }
 });
